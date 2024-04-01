@@ -14,14 +14,14 @@ end
 
 VFS.Include("LuaUI/Utilities/debug.lua")
 
-local HOVER_SEL, LOCAL_SEL, OTHER_SEL = 1, 2, 3
+local HOVER_SEL, LOCAL_SEL, OTHER_SEL, NO_SEL = 1, 2, 3, 1000
 
 -- Configurable Parts:
 local lineWidth, drawDepthCheck, platterOpacity, outlineOpacity
 
 ---- GL4 Backend Stuff----
 -- FIXME: Make VBOs into a table?
-local selectionShader, hoverSelectionVBO, localSelectionVBO, otherSelectionVBO
+local selectionShader, selectionVBOs
 local luaShaderDir                                          = "LuaUI/Widgets/Include/"
 
 local hasBadCulling                                         = ((Platform.gpuVendor == "AMD" and Platform.osFamily == "Linux") == true)
@@ -209,17 +209,16 @@ for unitDefID, unitDef in pairs(UnitDefs) do
 	end
 end
 
+local function CleanVBOs(unitID)
+	for _, vbo in pairs(selectionVBOs) do
+		if vbo.instanceIDtoIndex[unitID] then
+			popElementInstance(vbo, unitID)
+		end
+	end
+end
+
 local function AddSelected(unitID, unitTeam, vbo, animate)
-	-- Clean up current selections
-	if hoverSelectionVBO.instanceIDtoIndex[unitID] then
-		popElementInstance(hoverSelectionVBO, unitID)
-	end
-	if localSelectionVBO.instanceIDtoIndex[unitID] then
-		popElementInstance(localSelectionVBO, unitID)
-	end
-	if otherSelectionVBO.instanceIDtoIndex[unitID] then
-		popElementInstance(otherSelectionVBO, unitID)
-	end
+	CleanVBOs(unitID)
 	
 	if spValidUnitID(unitID) ~= true or spGetUnitIsDead(unitID) == true then
 		return
@@ -255,19 +254,6 @@ local function AddSelected(unitID, unitTeam, vbo, animate)
 	)
 end
 
-local function RemoveSelected(unitID)
-	selUnits[unitID] = nil
-	if hoverSelectionVBO.instanceIDtoIndex[unitID] then
-		popElementInstance(hoverSelectionVBO, unitID)
-	end
-	if localSelectionVBO.instanceIDtoIndex[unitID] then
-		popElementInstance(localSelectionVBO, unitID)
-	end
-	if otherSelectionVBO.instanceIDtoIndex[unitID] then
-		popElementInstance(otherSelectionVBO, unitID)
-	end
-end
-
 local function FindPreselUnits()
 	local preselection = {}
 	if lastHoverUnitID then
@@ -300,8 +286,9 @@ function Init()
 	checkSelectionType[OTHER_SEL] = true
 
 	for unitID, _ in pairs(selUnits) do
-		RemoveSelected(unitID)
+		CleanVBOs(unitID)
 	end
+	selUnits = {}
 
 	local DPatUnit = VFS.Include(luaShaderDir .. "DrawPrimitiveAtUnit.lua")
 	local InitDrawPrimitiveAtUnitShader = DPatUnit.InitDrawPrimitiveAtUnitShader
@@ -317,9 +304,10 @@ function Init()
 	shaderConfig.POST_GEOMETRY = "gl_Position.z = (gl_Position.z) - 16.0 / gl_Position.w;" -- Pull forward a little to reduce ground clipping. This only affects the drawWorld pass.
 	shaderConfig.POST_SHADING = "fragColor.rgba = vec4(g_color.rgb, opacity * (texcolor.a * " .. platterOpacity .. " + texcolor.a * sign(addRadius) * " .. (outlineOpacity - platterOpacity) .. "));"
 	selectionShader = InitDrawPrimitiveAtUnitShader(shaderConfig, "selectedUnits")
-	hoverSelectionVBO = InitDrawPrimitiveAtUnitVBO("selectedUnits_hover")
-	localSelectionVBO = InitDrawPrimitiveAtUnitVBO("selectedUnits_local")
-	otherSelectionVBO = InitDrawPrimitiveAtUnitVBO("selectedUnits_other")
+	selectionVBOs = {}
+	selectionVBOs[HOVER_SEL] = InitDrawPrimitiveAtUnitVBO("selectedUnits_hover")
+	selectionVBOs[LOCAL_SEL] = InitDrawPrimitiveAtUnitVBO("selectedUnits_local")
+	selectionVBOs[OTHER_SEL] = InitDrawPrimitiveAtUnitVBO("selectedUnits_other")
 
 	return selectionShader ~= nil
 end
@@ -368,9 +356,9 @@ local function DrawSelections(preUnit)
 	glStencilMask(1)
 
 	-- Each selection priority is drawn in sequence.
-	DrawSelectionType(hoverSelectionVBO, preUnit)
-	DrawSelectionType(localSelectionVBO, preUnit)
-	DrawSelectionType(otherSelectionVBO, preUnit, true)
+	DrawSelectionType(selectionVBOs[HOVER_SEL], preUnit)
+	DrawSelectionType(selectionVBOs[LOCAL_SEL], preUnit)
+	DrawSelectionType(selectionVBOs[OTHER_SEL], preUnit, true)
 
 	selectionShader:Deactivate()
 
@@ -397,15 +385,35 @@ function widget:SelectionChanged()
 	checkSelectionType[LOCAL_SEL] = true
 end
 
-local function CleanSelections(typeToClear, newSelUnits)
+local function CleanSelections(levelToClear, newSelection)
 	local changed = false
-	for unitID, type in pairs(selUnits) do
-		if type == typeToClear and newSelUnits[unitID] ~= type then
+	for unitID, level in pairs(selUnits) do
+		if level == levelToClear and not newSelection[unitID] then
 			changed = true
-			RemoveSelected(unitID)
+			CleanVBOs(unitID)
+			selUnits[unitID] = nil
 		end
 	end
 	return changed
+end
+
+local function UpdateSelections(selection, level, animate, colorFunc)
+	local vbo = selectionVBOs[level]
+	for unitID, _ in pairs(selection) do
+		local currentType = selUnits[unitID] or NO_SEL
+		if currentType >= level then
+			AddSelected(unitID, colorFunc(unitID), vbo, animate and currentType == NO_SEL)
+			selUnits[unitID] = level
+			for level = level + 1, OTHER_SEL do
+				checkSelectionType[level] = true
+			end
+		end
+	end
+	if CleanSelections(level, selection) then
+		for level = level + 1, OTHER_SEL do
+			checkSelectionType[level] = true
+		end
+	end
 end
 
 function widget:Update(dt)
@@ -426,59 +434,29 @@ function widget:Update(dt)
 
 	local useTeamcolor = (options.selectionColor.value == 'teamcolor')
 
-	local newSelUnits = {}
 	-- Hover selections
 	if checkSelectionType[HOVER_SEL] then
-		for unitID, _ in pairs(FindPreselUnits()) do
-			if selUnits[unitID] ~= HOVER_SEL then
-				local alreadySelected = selUnits[unitID]
-				local hoverColorID = ((fullSelect or spIsUnitAllied(unitID)) and 254) or 253
-				AddSelected(unitID, hoverColorID, hoverSelectionVBO, not alreadySelected)
-				selUnits[unitID] = HOVER_SEL
-				checkSelectionType[LOCAL_SEL], checkSelectionType[OTHER_SEL] = true, true
-			end
-			newSelUnits[unitID] = HOVER_SEL
-		end
-		if CleanSelections(HOVER_SEL, newSelUnits) then
-			checkSelectionType[LOCAL_SEL], checkSelectionType[OTHER_SEL] = true, true
-		end
+		local preselUnits = FindPreselUnits()
+		UpdateSelections(preselUnits, HOVER_SEL, true, function(unitID) return ((fullSelect or spIsUnitAllied(unitID)) and 254) or 253 end)
+		-- Prime hover to check again next time around, as we may have stopped selecting without making a selection
+		checkSelectionType[HOVER_SEL] = isSelectionBoxActive
 	end
 
 	-- Local selections
 	if checkSelectionType[LOCAL_SEL] then
+		local selectedUnits = {}
 		for _, unitID in pairs(spGetSelectedUnits()) do
-			if not newSelUnits[unitID] then
-				if selUnits[unitID] ~= LOCAL_SEL then
-					AddSelected(unitID, 255, localSelectionVBO, false)
-					selUnits[unitID] = LOCAL_SEL
-					checkSelectionType[OTHER_SEL] = true
-				end
-				newSelUnits[unitID] = LOCAL_SEL
-			end
-		end
-		if CleanSelections(LOCAL_SEL, newSelUnits) then
-			checkSelectionType[OTHER_SEL] = true
-		end
+			selectedUnits[unitID] = true
+		}
+		UpdateSelections(selectedUnits, LOCAL_SEL, false, function() return 255 end)
+		checkSelectionType[LOCAL_SEL] = false
 	end
 
 	-- Ally/other selections
 	if checkSelectionType[OTHER_SEL] then
-		for unitID, _ in pairs(WG.allySelUnits or {}) do
-			if not newSelUnits[unitID] and (selUnits[unitID] or OTHER_SEL) == OTHER_SEL then
-				if selUnits[unitID] ~= OTHER_SEL then
-					AddSelected(unitID, useTeamcolor and spGetUnitTeam(unitID) or 252, otherSelectionVBO, false)
-					selUnits[unitID] = OTHER_SEL
-				end
-				newSelUnits[unitID] = alreadySetType or OTHER_SEL
-			end
-		end
-		CleanSelections(OTHER_SEL, newSelUnits)
+		UpdateSelections(WG.allySelUnits or {}, OTHER_SEL, false, function(unitID) return useTeamcolor and spGetUnitTeam(unitID) or 252 end)
+		checkSelectionType[OTHER_SEL] = false
 	end
-
-    -- Prime hover to check again next time around, as we may have stopped selecting without making a selection
-	checkSelectionType[HOVER_SEL] = isSelectionBoxActive
-	checkSelectionType[LOCAL_SEL] = false
-	checkSelectionType[OTHER_SEL] = false
 end
 
 function widget:UnitDestroyed()
