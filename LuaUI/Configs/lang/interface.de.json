@@ -88,6 +88,8 @@
 	"cheatsheet_cat_wacky" : "Lustig",
 	"cheatsheet_cat_planetwars" : "Planet Wars",
 	"cheatsheet_cat_rejects" : "Technischer Krempel",
+	"replay_controls_options_progressbar": "Statusbalken",
+	"replay_controls_options_progressbar_desc": "Statusbalken für die Wiederholung anzeigen",
 	"x_units_in_queue" : {
 		"one" : "%{count} Einheit in Warteschlange",
 		"other" : "%{count} Einheiten in Warteschlange"

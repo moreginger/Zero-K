@@ -2831,6 +2831,19 @@ end
 
 WG.RemakeEpicMenu = RemakeEpicMenu
 
+local function LanguageChanged ()
+	for path, subtable in pairs(pathoptions) do
+		for _, element in ipairs(subtable) do
+			local option = element[2]
+			if option.i18nKey then
+				option.name = WG.Translate('interface', option.i18nKey)
+				option.desc = WG.Translate('interface', option.i18nKey .. "_desc")
+			end
+		end
+	end
+	WG.RemakeEpicMenu()
+end
+
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
@@ -3187,6 +3200,8 @@ function widget:Initialize()
 			option.OnChange({checked = value, value = value, color = value})
 		end
 	end
+
+	WG.InitializeTranslation (LanguageChanged, GetInfo().name)
 end
 
 function widget:Shutdown()
