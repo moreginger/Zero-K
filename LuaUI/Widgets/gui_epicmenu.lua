@@ -1056,8 +1056,8 @@ local function AddOption(path, option, wname ) --Note: this is used when loading
 	option.wname = wname
 
 	if option.i18nKey then
-		option.name = WG.Translate('interface', option.i18nKey)
-		option.desc = WG.Translate('interface', option.i18nKey .. "_desc")
+		option.name = WG.Translate('epicmenu', option.i18nKey)
+		option.desc = WG.Translate('epicmenu', option.i18nKey .. "_desc")
 	end
 
 	local curkey = path .. '_' .. option.key
@@ -2836,8 +2836,8 @@ local function LanguageChanged ()
 		for _, element in ipairs(subtable) do
 			local option = element[2]
 			if option.i18nKey then
-				option.name = WG.Translate('interface', option.i18nKey)
-				option.desc = WG.Translate('interface', option.i18nKey .. "_desc")
+				option.name = WG.Translate('epicmenu', option.i18nKey)
+				option.desc = WG.Translate('epicmenu', option.i18nKey .. "_desc")
 			end
 		end
 	end

@@ -13,7 +13,7 @@ end
 
 -- 5 May 2015 added progress bar, by xponen
 
-local i18nPrefix = 'replay_controls_'
+local i18nPrefix = 'replaycontrolbuttons_'
 
 --Speedup
 local widgetName = widget:GetInfo().name
@@ -65,7 +65,7 @@ options_order = { 'visibleprogress'}
 options = {
 	-- Useful if you want to keep the battle length a secret
 	visibleprogress = {
-		i18nKey = i18nPrefix .. 'options_progressbar',
+		i18nKey = i18nPrefix .. 'option_progressbar',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
