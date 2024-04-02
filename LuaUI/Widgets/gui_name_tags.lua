@@ -62,14 +62,14 @@ local unitsByTeam           = {}
 local teamAvatars           = {}
 local teamCheckDelays       = {}
 
+i18nPrefix = 'playernametags_'
 options_path                = "Settings/Interface/Player Name Tags"
 options_order               = { "onlyComms" }
 options                     = {
 	onlyComms = {
-		name = "Only tag Commanders",
+		i18nKey = i18nPrefix .. "option_onlytagcommanders",
 		type = "bool",
 		value = false,
-		desc = "Name tags will only be shown on Commanders",
 		OnChange = function(self)
 			onlyComms = self.value
 			teamAvatars = {}
