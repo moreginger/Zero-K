@@ -1057,7 +1057,8 @@ local function AddOption(path, option, wname ) --Note: this is used when loading
 
 	if option.i18nKey then
 		option.name = WG.Translate('epicmenu', option.i18nKey)
-		option.desc = WG.Translate('epicmenu', option.i18nKey .. "_desc")
+		-- Suppress logging for description as it is optional
+		option.desc = WG.Translate('epicmenu', option.i18nKey .. '_desc', {}, { suppressWarnings = true })
 	end
 
 	local curkey = path .. '_' .. option.key
@@ -2837,7 +2838,8 @@ local function LanguageChanged ()
 			local option = element[2]
 			if option.i18nKey then
 				option.name = WG.Translate('epicmenu', option.i18nKey)
-				option.desc = WG.Translate('epicmenu', option.i18nKey .. "_desc")
+				-- Suppress logging for description as it is optional
+				option.desc = WG.Translate('epicmenu', option.i18nKey .. '_desc', {}, { suppressWarnings = true })
 			end
 		end
 	end
