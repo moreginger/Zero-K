@@ -63,6 +63,7 @@ local strings = {
 	lastmsgpos = {"", ""},
 }
 
+i18nPrefix = 'chiliglobalcommands_'
 options_path = 'Settings/HUD Panels/Global Commands'
 options = {
 	background_opacity = {
@@ -94,14 +95,12 @@ options = {
 		action = 'togglelos',
 	},
 	simplifiedteamcolor = {
-		name = 'Simplified Team Colors',
-		desc = 'Toggles simplified team colors.',
+		i18nKey = i18nPrefix .. 'option_simplifiedteamcolors',
 		type = 'button',
 		OnChange = toggleTeamColors,
 	},
 	showeco = {
-		name = 'Toggle Economy Overlay',
-		desc = 'Show metal, geo spots and energy grid',
+		i18nKey = i18nPrefix .. 'option_toggleeconomyoverlay',
 		hotkey = {key='f4', mod=''},
 		type ='button',
 		action='showeco',
@@ -113,7 +112,7 @@ options = {
 		end,
 	},
 	fancySkinning = {
-		name = 'Fancy Skinning',
+		i18nKey = i18nPrefix .. 'option_fancyskinning',
 		type = 'radioButton',
 		value = 'panel',
 		items = {
@@ -146,8 +145,7 @@ options = {
 		noHotkey = true,
 	},
 	hide = {
-		name = 'Hide GBC',
-		desc = 'Hides the Global Bar of Commands.',
+		i18nKey = i18nPrefix .. 'option_hidegbc',
 		type = 'bool',
 		value = false,
 		hidden = true, -- hidden on purpose

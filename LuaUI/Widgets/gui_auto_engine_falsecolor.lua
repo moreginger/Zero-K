@@ -20,24 +20,22 @@ local spSendCommands = Spring.SendCommands
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 --options for epicmenu:
+i18nPrefix = 'autotogglefalsecolorvision_'
 options_path = 'Settings/Interface/Map/Auto Toggle Overlay'
 options_order = {'enginemetalview','engineheightview','enginepathview'}
 options={
 	enginemetalview ={
-		name = 'Metalview Color',
-		desc = 'RECLAIM & RESURRECT toggle metalmap vision.',
+		i18nKey = i18nPrefix .. 'option_metalviewcolor',
 		type = 'bool',
 		value = false,
 	},
 	engineheightview ={
-		name = 'Heightview Color',
-		desc = 'TERRAFORM & BUILD toggle heightmap vision.',
+		i18nKey = i18nPrefix .. 'option_heightviewcolor',
 		type = 'bool',
 		value = false,
 	},
 	enginepathview ={
-		name = 'Pathview Color',
-		desc = 'MOVE & JUMP toggle pathmap vision.',
+		i18nKey = i18nPrefix .. 'option_pathviewcolor',
 		type = 'bool',
 		value = false,
 	},

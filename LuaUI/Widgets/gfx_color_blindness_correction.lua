@@ -11,12 +11,13 @@ function widget:GetInfo()
 	}
 end
 
+i18nPrefix = 'colorblindnesscorrection_'
 options_path = "Settings/Accessibility"
 options_order = { "cbcType", "cbcMethod", "cbcOnlySim" }
 
 options = {
 	cbcType = {
-		name = "Color Blindness Type",
+		i18nKey = i18nPrefix .. 'option_colorblindnesstype',
 		type = "radioButton",
 		value = "none",
 		items = {
@@ -29,7 +30,7 @@ options = {
 		everyMode = true,
 	},
 	cbcMethod = {
-		name = "Color Blindness Correction Method",
+		i18nKey = i18nPrefix .. 'option_colorblindnesscorrectionmethod',
 		type = "number",
 		value = 2,
 		min = 1, max = 2, step = 1,
@@ -37,7 +38,7 @@ options = {
 		everyMode = true,
 	},
 	cbcOnlySim = {
-		name = 'Only simulate color blindness',
+		i18nKey = i18nPrefix .. 'option_onlysimulatecolorblindness',
 		type = 'bool',
 		value = false,
 		advanced = true,

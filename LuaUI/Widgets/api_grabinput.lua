@@ -24,6 +24,7 @@ local grabPaused = false
 --------------------------------------------------------------------------------
 -- Widget Options
 
+i18nPrefix = 'grabinput_'
 options_path = 'Settings/Interface/Mouse Cursor'
 options_order = {
 	'grabinput',
@@ -35,7 +36,7 @@ options_order = {
 -- toggle grabinput easily.
 options = {
 	grabinput = {
-		name = "Lock Cursor to Window",
+		i18nKey = i18nPrefix .. 'option_lockcursortowindow',
 		tooltip = "Prevents the cursor from leaving the Window/Screen",
 		type = "bool",
 		value = true,
@@ -48,7 +49,7 @@ options = {
 		end
 	},
 	lobbyDisables = {
-		name = "Lobby overlay disables lock",
+		i18nKey = i18nPrefix .. 'option_lobbyoverlaydisableslock',
 		tooltip = "Disables input grabbing when the lobby overlay is visible.",
 		type = "bool",
 		value = true,
@@ -62,7 +63,7 @@ options = {
 		noHotkey = true,
 	},
 	pauseDisables2 = {
-		name = "Pausing disables lock",
+		i18nKey = i18nPrefix .. 'option_pausingdisableslock',
 		tooltip = "Disables input grabbing when the game is paused.",
 		type = "bool",
 		value = false,

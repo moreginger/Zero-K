@@ -46,24 +46,23 @@ local trackList = {
 	defeatTracks    = {},
 }
 
+i18nPrefix = 'musicplayer_'
 options_path = 'Settings/Audio'
 options = {
 	useIncludedTracks = {
-		name = "Use Included Tracks",
+		i18nKey = i18nPrefix .. 'option_useincludedtracks',
 		type = 'bool',
 		value = true,
-		desc = 'Use the tracks included with Zero-K',
 		noHotkey = true,
 	},
 	pausemusic = {
-		name = 'Pause Music',
+		i18nKey = i18nPrefix .. 'option_pausemusic',
 		type = 'bool',
 		value = false,
-		desc = "Music pauses with game",
 		noHotkey = true,
 	},
 	albumSelection = {
-		name = 'Track list',
+		i18nKey = i18nPrefix .. 'option_tracklist',
 		type = 'radioButton',
 		value = oldTrackListName,
 		items = {

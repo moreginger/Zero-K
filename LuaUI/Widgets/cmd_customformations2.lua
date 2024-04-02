@@ -36,11 +36,12 @@ local overrideCmdSingleUnit = {
 	[CMD.GUARD] = true,
 }
 
+i18nPrefix = 'customformations2_'
 options_path = 'Settings/Interface/Line Formations'
 options_order = { 'spreadtypes', 'ignorespreadsize', 'rank_gap', 'drawmode_v2', 'linewidth', 'dotsize', 'overrideGuard','RMBLineFormation' }
 options = {
 	spreadtypes = {
-		name = "Evenly spread unit types along lines",
+		i18nKey = i18nPrefix .. 'option_evenlyspreadunittypesalonglines',
 		type = 'radioButton',
 		value = 'move',
 		items={
@@ -50,21 +51,19 @@ options = {
 		},
 	},
 	ignorespreadsize = {
-		name = 'Merge spread group size',
-		desc = "Groups of unit types of this size and smaller are merged into the largest group when spreading unit types evenly along the line.",
+		i18nKey = i18nPrefix .. 'option_mergespreadgroupsize',
 		type = 'number',
 		value = 1,
 		min = 0, max = 50, step=1,
 	},
 	rank_gap = {
-		name = 'Formation rank spacing',
-		desc = "The gap between front and back formations. All units start at the same formation rank by default. Enable Formation Rank in Settings/Interface/Commands or edit Formation Rank in Settings/Unit Behaviour/Default States.",
+		i18nKey = i18nPrefix .. 'option_formationrankspacing',
 		type = 'number',
 		value = 100,
 		min = 20, max = 250, step=5,
 	},
 	drawmode_v2 = {
-		name = 'Draw mode',
+		i18nKey = i18nPrefix .. 'option_drawmode',
 		-- desc is not supported here :(
 		-- desc = 'Change the formation display. Formations are drawn by moving the mouse while the mouse button is pressed. Supported commands are Move, Fight, Patrol, Manual attacks, Jump and with the ALT key held down Attack, Set target and Unload.'
 		-- (new) players might not even know about custom formations, so ultimately this should probably be displayed above these options
@@ -79,7 +78,7 @@ options = {
 	},
 
 	linewidth = {
-		name = 'Width of lines',
+		i18nKey = i18nPrefix .. 'option_widthoflines',
 		type = 'number',
 		value = 2,
 		min = 1, max = 2, step=1,
@@ -87,14 +86,13 @@ options = {
 	},
 
 	dotsize = {
-		name = 'Size of dots',
+		i18nKey = i18nPrefix .. 'option_sizeofdots',
 		type = 'number',
 		value = 1,
 		min = 0.5, max = 2, step=0.1,
 	},
 	overrideGuard = {
-		name = "Override Guard on single unit",
-		desc = "When enabled, dragging a short line on a unit will give move commands rather than a guard command.",
+		i18nKey = i18nPrefix .. 'option_overrideguardonsingleunit',
 		type = "bool",
 		value = true,
 		path = 'Settings/Interface/Commands',
@@ -109,8 +107,7 @@ options = {
 		end,
 	},
 	RMBLineFormation = {
-		name = "RMB can issue line formation",
-		desc = "When enabled you can also issue the line formation command with dragging rmb, clicking rmb without moving still cancels.",
+		i18nKey = i18nPrefix .. 'option_rmbcanissuelineformation',
 		type = "bool",
 		value = false,
 		path = 'Settings/Interface/Commands',

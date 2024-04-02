@@ -41,16 +41,16 @@ local island = false
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
+i18nPrefix = 'mapedgebarrier_'
 options_path = 'Settings/Graphics/Map/Edge Barrier'
 options = {
 	drawForIslands = {
-		name = "Draw for islands",
+		i18nKey = i18nPrefix .. 'option_drawforislands',
 		type = 'bool',
 		value = true,
-		desc = "Draws boundary wall when map is an island",
 	},
 	wallFromOutside = {
-		name = "Visible walls from outside",
+		i18nKey = i18nPrefix .. 'option_visiblewallsfromoutside',
 		type = 'bool',
 		value = false,
 		desc = "Map wall is visible from the outside (e.g. when it's between camera and main map)",
@@ -62,7 +62,7 @@ options = {
 		end
 	},
 	northSouthText = {
-		name = "North, East, South, & West text",
+		i18nKey = i18nPrefix .. 'option_northeastsouthwesttext',
 		type = 'bool',
 		value = false,
 		desc = 'Help you identify map direction under rotation by placing a "North/South/East/West" text on the map edges',

@@ -71,6 +71,7 @@ local lastHoverUnitID, lastAllySelStaleCheck
 local otherOpacityMult = 0.4
 
 local Init
+i18nPrefix = 'selectedunitsgl42_'
 options_path = 'Settings/Interface/Selection/Default Selections'
 options_order = {
 	'linewidth', 'platteropacity', 'outlineopacity', 
@@ -79,7 +80,7 @@ options_order = {
 }
 options = {
 	linewidth = {
-		name = 'Outline Width',
+		i18nKey = i18nPrefix .. 'option_outlinewidth',
 		desc = '',
 		type = 'number',
 		min = 0.1,
@@ -91,8 +92,7 @@ options = {
 		end,
 	},
 	platteropacity = {
-		name = 'Fill Opacity',
-		desc = 'Opacity of the selection fill - 0 is invisble',
+		i18nKey = i18nPrefix .. 'option_fillopacity',
 		type = 'number',
 		min = 0.0,
 		max = 1,
@@ -103,8 +103,7 @@ options = {
 		end,
 	},
 	outlineopacity = {
-		name = 'Outline Opacity',
-		desc = 'Opacity of the selection outline - 1 is solid',
+		i18nKey = i18nPrefix .. 'option_outlineopacity',
 		type = 'number',
 		min = 0.0,
 		max = 1.0,
@@ -115,7 +114,7 @@ options = {
 		end,
 	},
 	selectionColor = {
-		name = 'Other Selections (allies and spectating)',
+		i18nKey = i18nPrefix .. 'option_otherselectionsalliesandspectating',
 		type = 'radioButton',
 		items = {
 			{name = 'Shown with team colour', key='teamcolor', desc="Show selected ally units with their team colour."},
@@ -127,8 +126,7 @@ options = {
 		end,
 	},
 	ally_strength = {
-		name = 'Ally Selection Strength',
-		desc = 'Opacity multiplier for ally selections when playing',
+		i18nKey = i18nPrefix .. 'option_allyselectionstrength',
 		type = 'number',
 		min = 0.0,
 		max = 1,
@@ -139,8 +137,7 @@ options = {
 		end,
 	},
 	spec_strength = {
-		name = 'Player Selection Strength (as spectator)',
-		desc = 'Opacity multiplier for player selections while spectating',
+		i18nKey = i18nPrefix .. 'option_playerselectionstrengthasspectator',
 		type = 'number',
 		min = 0.0,
 		max = 1,
@@ -151,8 +148,7 @@ options = {
 		end,
 	},
 	selectionheight = {
-		name = 'Selection Height',
-		desc = 'How much to float the selection above the unit baseline - a value of 0 is more likely to be clipped by units',
+		i18nKey = i18nPrefix .. 'option_selectionheight',
 		type = 'number',
 		min = 0.0,
 		max = 8.0,
@@ -164,8 +160,7 @@ options = {
 		advanced = true,
 	},
 	drawdepthcheck = {
-		name = 'Draw Selections in Unit Plane',
-		desc = 'If disabled, selections are only drawn below units and never above - even for planes. This can cause the selection to be invisible. On the other hand, disabling this can increase performance.',
+		i18nKey = i18nPrefix .. 'option_drawselectionsinunitplane',
 		type = 'bool',
 		value = 'true',
 		OnChange = function(self)

@@ -47,10 +47,11 @@ local forRadarIcons = true
 ----------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------
 
+i18nPrefix = 'uniticons_'
 options_path = 'Settings/Interface/Hovering Icons'
 options = {
 	iconsize = {
-		name = 'Hovering Icon Size',
+		i18nKey = i18nPrefix .. 'option_hoveringiconsize',
 		type = 'number',
 		value = 30, min=10, max = 40,
 		OnChange = function(self)
@@ -58,8 +59,7 @@ options = {
 		end
 	},
 	forRadarIcons = {
-		name = 'Draw on Icons',
-		desc = 'Draws state icons when zoomed out.',
+		i18nKey = i18nPrefix .. 'option_drawonicons',
 		type = 'bool',
 		value = true,
 		noHotkey = true,

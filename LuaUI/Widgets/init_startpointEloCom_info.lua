@@ -15,12 +15,12 @@ VFS.Include ("LuaRules/Utilities/lobbyStuff.lua")
 VFS.Include("LuaRules/Configs/start_setup.lua")
 
 --[[
+i18nPrefix = 'commnelostartposinfo_'
 options_path = 'Settings/Interface/Pregame Setup'
 options_order = { 'showrankicon',}
 options = {
 	showrankicon = {
-		name = 'Show rank icon for everyone',
-		desc = 'Show rank icon under player name before game start',
+		i18nKey = i18nPrefix .. 'option_showrankiconforeveryone',
 		type = 'bool',
 		value = false,
 	},

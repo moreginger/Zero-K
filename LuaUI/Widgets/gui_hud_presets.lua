@@ -1438,33 +1438,31 @@ end
 ----------------------------------------------------
 -- Options
 ----------------------------------------------------
+i18nPrefix = 'hudpresets_'
 options_path = 'Settings/HUD Presets'
 options_order = {'updateNewDefaults', 'setToDefault', 'maintainDefaultUI', 'minimapScreenSpace', 'interfacePreset'}
 options = {
 	updateNewDefaults = {
-		name  = "Stay up to date",
+		i18nKey = i18nPrefix .. 'option_stayuptodate',
 		type  = "bool",
 		value = true,
-		desc = "Updates your UI when new defaults are released.",
 		noHotkey = true,
 	},
 	setToDefault = {
-		name  = "Set To Default Once",
+		i18nKey = i18nPrefix .. 'option_settodefaultonce',
 		type  = "bool",
 		value = true,
-		desc = "Resets the HUD to the default next time this widget is initialized.",
 		advanced = true,
 		noHotkey = true,
 	},
 	maintainDefaultUI = {
-		name  = "Reset on screen resolution change",
+		i18nKey = i18nPrefix .. 'option_resetonscreenresolutionchange',
 		type  = "bool",
 		value = true,
-		desc = "Resets the UI when screen resolution changes. Disable if you plan to customise your UI.",
 		noHotkey = true,
 	},
 	minimapScreenSpace = {
-		name = "Minimap Size",
+		i18nKey = i18nPrefix .. 'option_minimapsize',
 		type = "number",
 		value = 0.19, min = 0.05, max = 0.4, step = 0.01,
 		--desc = "Controls minimap size for the New UI presets.", -- supresses value tooltip
@@ -1473,7 +1471,7 @@ options = {
 		end,
 	},
 	interfacePreset = {
-		name = 'UI Preset',
+		i18nKey = i18nPrefix .. 'option_uipreset',
 		type = 'radioButton',
 		value = 'default',
 		items = {

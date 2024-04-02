@@ -104,23 +104,24 @@ local function UpdateColorNotify()
 	UpdateColor()
 end
 
+i18nPrefix = 'localteamcolors_'
 options_path = 'Settings/Interface/Team Colors'
 options = {
 	colorSetting = {
-		name = 'Team Color Mode',
+		i18nKey = i18nPrefix .. 'option_teamcolormode',
 		type = 'radioButton',
 		value = 'default',
 		items = colorSettingsItems,
 		OnChange = UpdateColorConfig
 	},
 	matchColors = {
-		name = 'Sync Colors With Team',
+		i18nKey = i18nPrefix .. 'option_synccolorswithteam',
 		type = 'bool',
 		value = false,
 		OnChange = UpdateColorNotify
 	},
 	simpleEnemyAllyTeam = {
-		name = 'Colour Enemies By Team',
+		i18nKey = i18nPrefix .. 'option_colourenemiesbyteam',
 		type = 'radioButton',
 		value = 'auto',
 		items = {

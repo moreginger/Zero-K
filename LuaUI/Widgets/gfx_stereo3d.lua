@@ -261,20 +261,20 @@ local function UpdateConvSep()
 	conv = options.conv.value * swap
 end
 
+i18nPrefix = 'stereo3d_'
 options_path = 'Settings/Graphics/Effects/Stereo3D'
 options_order = { 'toggle3d', 'helpwindow', 'lblblank1', 'lblsettings', 'swapeyes', 'lasersight', 'hidecursor', 'sep', 'conv', 'lblblank2', 's3dmode', 'lblblank3',  }
 options = {
 	
 	toggle3d = {
-		name = 'Enable Stereo 3D',
+		i18nKey = i18nPrefix .. 'option_enablestereo3d',
 		type = 'bool',
 		value = false,
-		desc = 'Turn Stereo3D vision on or off.',
 		noHotkey = true,
 	},
 	
 	helpwindow = {
-		name = 'Stereo3D Help',
+		i18nKey = i18nPrefix .. 'option_stereo3dhelp',
 		type = 'text',
 		value = [[
 			- Press alt+ctrl+shift to toggle the mouse cursor (doesn't work if gui is hidden).
@@ -290,48 +290,45 @@ options = {
 	lblsettings = {name='Settings', type='label'},
 	
 	swapeyes = {
-		name = 'Swap Eyes',
+		i18nKey = i18nPrefix .. 'option_swapeyes',
 		type = 'bool',
 		value = false,
 		OnChange = UpdateConvSep,
 		noHotkey = true,
 	},
 	lasersight = {
-		name = 'Laser Sight',
+		i18nKey = i18nPrefix .. 'option_lasersight',
 		type = 'bool',
 		value = true,
-		desc = 'Enable Laser sight for cursor.',
 		noHotkey = true,
 	},
 	
 	hidecursor = {
-		name = 'Hide Cursor',
+		i18nKey = i18nPrefix .. 'option_hidecursor',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 	},
 	
 	sep = {
-		name = 'Separation',
+		i18nKey = i18nPrefix .. 'option_separation',
 		type = 'number',
 		value = sep,
 		min=0,max=30,step=0.1,
-		desc = 'How far apart your eyes are.',
 		OnChange = UpdateConvSep,
 	},
 	
 	conv = {
-		name = 'Convergence',
+		i18nKey = i18nPrefix .. 'option_convergence',
 		type = 'number',
 		value = conv,
 		min=0,max=0.05,step=0.001,
-		desc = 'How crosseyed you are.',
 		OnChange = UpdateConvSep,
 	},
 	
 	
 	s3dmode = {
-		name   = '3D Modes',
+		i18nKey = i18nPrefix .. 'option_3dmodes',
 		type   = 'list',
 		items  = possibleRenderer,
 		OnChange = function()
@@ -349,7 +346,7 @@ options = {
 	
 	--[[
 	camera = {
-		name = 'Camera Type',
+		i18nKey = i18nPrefix .. 'option_cameratype',
 		type = 'list',
 		items = {
 			{name = 'Default', 	            key = 'viewta'},

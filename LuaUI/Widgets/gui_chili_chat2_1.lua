@@ -170,6 +170,7 @@ local DiffTimers = Spring.DiffTimers
 
 ----
 
+i18nPrefix = 'chilichat22_'
 options_path = "Settings/HUD Panels/Chat/Console"
 options_order = {
 	'lblError',
@@ -230,21 +231,21 @@ options = {
 	},
 	
 	text_height = {
-		name = 'Text Size',
+		i18nKey = i18nPrefix .. 'option_textsize',
 		type = 'number',
 		value = 14,
 		min = 8, max = 30, step = 1,
 		OnChange = onOptionsChanged,
 	},
 	highlighted_text_height = {
-		name = 'Highlighted Text Size',
+		i18nKey = i18nPrefix .. 'option_highlightedtextsize',
 		type = 'number',
 		value = 16,
 		min = 8, max = 30, step = 1,
 		OnChange = onOptionsChanged,
 	},
 	clickable_points = {
-		name = "Clickable points and labels",
+		i18nKey = i18nPrefix .. 'option_clickablepointsandlabels',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
@@ -252,7 +253,7 @@ options = {
 		advanced = true,
 	},
 	pointButtonOpacity = {
-		name = "Point button opacity",
+		i18nKey = i18nPrefix .. 'option_pointbuttonopacity',
 		type = 'number',
 		value = 0.25,
 		min = 0, max = 1, step = 0.05,
@@ -261,7 +262,7 @@ options = {
 	
 	-- TODO work in progress
 	dedupe_messages = {
-		name = "Dedupe messages",
+		i18nKey = i18nPrefix .. 'option_dedupemessages',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
@@ -269,7 +270,7 @@ options = {
 		advanced = true,
 	},
 	dedupe_points = {
-		name = "Dedupe points and labels",
+		i18nKey = i18nPrefix .. 'option_dedupepointsandlabels',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
@@ -277,35 +278,35 @@ options = {
 		advanced = true,
 	},
 	highlight_all_private = {
-		name = "Highlight all private messages",
+		i18nKey = i18nPrefix .. 'option_highlightallprivatemessages',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 		advanced = true,
 	},
 	highlight_filter_allies = {
-		name = "Check allies messages for highlight",
+		i18nKey = i18nPrefix .. 'option_checkalliesmessagesforhighlight',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 		advanced = true,
 	},
 	highlight_filter_enemies = {
-		name = "Check enemy messages for highlight",
+		i18nKey = i18nPrefix .. 'option_checkenemymessagesforhighlight',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 		advanced = true,
 	},
 	highlight_filter_specs = {
-		name = "Check spec messages for highlight",
+		i18nKey = i18nPrefix .. 'option_checkspecmessagesforhighlight',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 		advanced = true,
 	},
 	highlight_filter_other = {
-		name = "Check other messages for highlight",
+		i18nKey = i18nPrefix .. 'option_checkothermessagesforhighlight',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
@@ -313,7 +314,7 @@ options = {
 	},
 --[[
 	highlight_filter = {
-		name = 'Highlight filter',
+		i18nKey = i18nPrefix .. 'option_highlightfilter',
 		type = 'list',
 		OnChange = onOptionsChanged, -- NO NEED
 		value = 'allies',
@@ -327,7 +328,7 @@ options = {
 --]]
 	
 	highlight_surround = {
-		name = "Surround highlighted messages",
+		i18nKey = i18nPrefix .. 'option_surroundhighlightedmessages',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
@@ -335,7 +336,7 @@ options = {
 		advanced = true,
 	},
 	highlight_sound = {
-		name = "Sound for highlighted messages",
+		i18nKey = i18nPrefix .. 'option_soundforhighlightedmessages',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
@@ -343,42 +344,42 @@ options = {
 		advanced = true,
 	},
 	hideSpec = {
-		name = "Hide Spectator Chat",
+		i18nKey = i18nPrefix .. 'option_hidespectatorchat',
 		type = 'bool',
 		value = false,
 		OnChange = onOptionsChanged,
 		advanced = false,
 	},
 	hideAlly = {
-		name = "Hide Ally Chat",
+		i18nKey = i18nPrefix .. 'option_hideallychat',
 		type = 'bool',
 		value = false,
 		OnChange = onOptionsChanged,
 		advanced = false,
 	},
 	hidePoint = {
-		name = "Hide Points",
+		i18nKey = i18nPrefix .. 'option_hidepoints',
 		type = 'bool',
 		value = false,
 		OnChange = onOptionsChanged,
 		advanced = true,
 	},
 	hideLabel = {
-		name = "Hide Labels",
+		i18nKey = i18nPrefix .. 'option_hidelabels',
 		type = 'bool',
 		value = false,
 		OnChange = onOptionsChanged,
 		advanced = true,
 	},
 	hideLog = {
-		name = "Hide Engine Logging Messages",
+		i18nKey = i18nPrefix .. 'option_hideengineloggingmessages',
 		type = 'bool',
 		value = true,
 		OnChange = onOptionsChanged,
 		advanced = true,
 	},
 	max_lines = {
-		name = 'Maximum Lines (20-100)',
+		i18nKey = i18nPrefix .. 'option_maximumlines20100',
 		type = 'number',
 		value = 60,
 		min = 20, max = 100, step = 1,
@@ -386,43 +387,43 @@ options = {
 	},
 	
 	color_chat = {
-		name = 'Everyone chat text',
+		i18nKey = i18nPrefix .. 'option_everyonechattext',
 		type = 'colors',
 		value = { 1, 1, 1, 1 },
 		OnChange = onOptionsChanged,
 	},
 	color_ally = {
-		name = 'Ally text',
+		i18nKey = i18nPrefix .. 'option_allytext',
 		type = 'colors',
 		value = { 0.2, 1, 0.2, 1 },
 		OnChange = onOptionsChanged,
 	},
 	color_other = {
-		name = 'Other text',
+		i18nKey = i18nPrefix .. 'option_othertext',
 		type = 'colors',
 		value = { 0.6, 0.6, 0.6, 1 },
 		OnChange = onOptionsChanged,
 	},
 	color_spec = {
-		name = 'Spectator text',
+		i18nKey = i18nPrefix .. 'option_spectatortext',
 		type = 'colors',
 		value = { 0.8, 0.8, 0.8, 1 },
 		OnChange = onOptionsChanged,
 	},
 	color_dup = {
-		name = 'Duplicate message mark',
+		i18nKey = i18nPrefix .. 'option_duplicatemessagemark',
 		type = 'colors',
 		value = { 1, 0.2, 0.2, 1 },
 		OnChange = onOptionsChanged,
 	},
 	color_highlight = {
-		name = 'Highlight mark',
+		i18nKey = i18nPrefix .. 'option_highlightmark',
 		type = 'colors',
 		value = { 1, 1, 0.2, 1 },
 		OnChange = onOptionsChanged,
 	},
 	color_background = {
-		name = "Background color",
+		i18nKey = i18nPrefix .. 'option_backgroundcolor',
 		type = "colors",
 		value = { 0, 0, 0, 0},
 		OnChange = function(self)
@@ -435,29 +436,27 @@ options = {
 		end,
 	},
 	mousewheel = {
-		name = "Scroll with mousewheel",
+		i18nKey = i18nPrefix .. 'option_scrollwithmousewheel',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 		OnChange = function(self) scrollpanel1.ignoreMouseWheel = not self.value; end,
 	},
 	defaultAllyChat = {
-		name = "Default ally chat",
-		desc = "Sets default chat mode to allies at game start",
+		i18nKey = i18nPrefix .. 'option_defaultallychat',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 	},
 	autohide = {
-		name = "Autohide chat",
-		desc = "Hides the chat when not in use",
+		i18nKey = i18nPrefix .. 'option_autohidechat',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 		OnChange = onOptionsChanged,
 	},
 	autohide_time = {
-		name = "Autohide time",
+		i18nKey = i18nPrefix .. 'option_autohidetime',
 		type = 'number',
 		value = 8,
 		min = 1, max = 30, step = 1,

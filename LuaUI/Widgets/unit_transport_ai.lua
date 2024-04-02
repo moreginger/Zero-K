@@ -82,31 +82,29 @@ local unitAICmdDesc = {
 	params 	= {0, 'AI Off','AI On'}
 }
 
+i18nPrefix = 'transportai_'
 options_path = 'Settings/Unit Behaviour/Transport AI'
 options = {
 	transportFromFactory = {
-		name = "Transport From Factory",
+		i18nKey = i18nPrefix .. 'option_transportfromfactory',
 		type = "bool",
 		value = false,
-		desc = "When enabled newly completed units will be transported to the waypoint of their parent factory.",
 		noHotkey = true,
 	},
 	lingerOnConstructorTransport = {
-		name = "Linger on Constructor Transport",
+		i18nKey = i18nPrefix .. 'option_lingeronconstructortransport',
 		type = "bool",
 		value = true,
-		desc = "Enable to make transports sit next to constructors after transporting them.",
 		noHotkey = true,
 	},
 	ignoreBuilders = {
-		name = "Ignore Constructors From Factory",
+		i18nKey = i18nPrefix .. 'option_ignoreconstructorsfromfactory',
 		type = "bool",
 		value = false,
-		desc = "Enable to not transport newly completed constructors.",
 		noHotkey = true,
 	},
 	minimumTransportBenefit = {
-		name = 'Factory transport benefit threshold (s)',
+		i18nKey = i18nPrefix .. 'option_factorytransportbenefitthresholds',
 		type = 'number',
 		value = 2,
 		min = -10, max = 10, step = 0.1,

@@ -11,13 +11,13 @@ end
 -- Epic Menu Options
 --------------------------------------------------------------------------------
 
+i18nPrefix = 'areareclaimtrees_'
 options_path = 'Settings/Unit Behaviour'
 options = {
 	defaultAvoidTrees = {
-		name = "Area reclaim avoids energy",
+		i18nKey = i18nPrefix .. 'option_areareclaimavoidsenergy',
 		type = "bool",
 		value = false,
-		desc = "Enabling causes area reclaim orders to avoid reclaiming trees and other energy-only features. Reclaim trees by issuing the order centred on a tree or by holding Ctrl.\n\nThe behaviour is reversed when disabled, causing orders given with Ctrl held to avoid reclaiming trees.",
 		noHotkey = true,
 	},
 }

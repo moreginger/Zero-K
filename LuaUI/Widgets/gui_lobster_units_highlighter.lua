@@ -29,29 +29,27 @@ local YELLOW = {1, 1, 0.35, 0.4}
 
 local LOB_WEAPON_NUM = 1
 
+i18nPrefix = 'lobsterunitshighlighter_'
 options_path = "Settings/Interface/Falling Units/Lobster"
 options_order = {"drawEffectCircle", "checkReloadTime", "checkRange", "drawFor", "edgeRange", "useHightlight", "highlightStrength"}
 options = {
 	drawEffectCircle = {
-		name = "Show effect circle",
+		i18nKey = i18nPrefix .. 'option_showeffectcircle',
 		type = "bool",
 		value = true,
-		desc = "Draws a circle around Lobsters showing their effect range.",
 	},
 	checkReloadTime = {
-		name = "Check Reload Time",
+		i18nKey = i18nPrefix .. 'option_checkreloadtime',
 		type = "bool",
 		value = true,
-		desc = "Do not draw highlight for Lobsters that are reloading.",
 	},
 	checkRange = {
-		name = "Check Range",
+		i18nKey = i18nPrefix .. 'option_checkrange',
 		type = "bool",
 		value = true,
-		desc = "Do not draw highlight for Lobsters that out of range of the cursor.",
 	},
 	drawFor = {
-		name = 'Draw highlight for',
+		i18nKey = i18nPrefix .. 'option_drawhighlightfor',
 		type = 'radioButton',
 		value = 'nearby',
 		items = {
@@ -62,7 +60,7 @@ options = {
 		},
 	},
 	edgeRange = {
-		name = "Nearby detection range",
+		i18nKey = i18nPrefix .. 'option_nearbydetectionrange',
 		type = "number",
 		value = 50,
 		min = 0,
@@ -70,13 +68,12 @@ options = {
 		step = 5,
 	},
 	useHightlight = {
-		name = "Default visualisation",
+		i18nKey = i18nPrefix .. 'option_defaultvisualisation',
 		type = "bool",
 		value = true,
-		desc = "Highlight units which will be lobbed. When disabled, circles are drawn below units that show more information.",
 	},
 	highlightStrength = {
-		name = "Highlight strength",
+		i18nKey = i18nPrefix .. 'option_highlightstrength',
 		type = "number",
 		value = 0.6,
 		min = 0,

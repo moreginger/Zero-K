@@ -188,11 +188,12 @@ local defaultFacHotkeys = {
 	{key='T', mod='alt+'},
 }
 
+i18nPrefix = 'chilicoreselector_'
 options_path = 'Settings/HUD Panels/Quick Selection Bar'
 options_order = {  'showCoreSelector', 'vertical', 'buttonSizeLong', 'background_opacity', 'monitoridlecomms','monitoridlenano', 'monitorInbuiltCons', 'leftMouseCenter', 'lblSelectionIdle', 'selectprecbomber', 'selectidlecon', 'selectidlecon_all', 'lblSelection', 'selectcomm', 'horPaddingLeft', 'horPaddingRight', 'vertPadding', 'buttonSpacing', 'minButtonSpaces', 'specSpaceOverride', 'fancySkinning', 'leftsideofscreen'}
 options = {
 	showCoreSelector = {
-		name = 'Selection Bar Visibility',
+		i18nKey = i18nPrefix .. 'option_selectionbarvisibility',
 		type = 'radioButton',
 		value = 'specHide',
 		items = {
@@ -205,21 +206,21 @@ options = {
 		noHotkey = true,
 	},
 	vertical = {
-		name = 'Vertical Bar',
+		i18nKey = i18nPrefix .. 'option_verticalbar',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 		OnChange = OptionsUpdateLayout,
 	},
 	buttonSizeLong = {
-		name = 'Button Size',
+		i18nKey = i18nPrefix .. 'option_buttonsize',
 		type = 'number',
 		value = 58,
 		min = 10, max = 200, step = 1,
 		OnChange = OptionsUpdateLayout,
 	},
 	background_opacity = {
-		name = "Opacity",
+		i18nKey = i18nPrefix .. 'option_opacity',
 		type = "number",
 		value = 0, min = 0, max = 1, step = 0.01,
 		OnChange = function(self)
@@ -230,60 +231,57 @@ options = {
 		end
 	},
 	monitoridlecomms = {
-		name = 'Track idle commanders',
+		i18nKey = i18nPrefix .. 'option_trackidlecommanders',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 	},
 	monitoridlenano = {
-		name = 'Track idle nanotowers',
+		i18nKey = i18nPrefix .. 'option_trackidlenanotowers',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 	},
 	monitorInbuiltCons = {
-		name = 'Track constructors being built',
+		i18nKey = i18nPrefix .. 'option_trackconstructorsbeingbuilt',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 	},
 	leftMouseCenter = {
-		name = 'Swap Camera Center Button',
-		desc = 'When enabled left click a commander or factory to center the camera on it. When disabled right click centers.',
+		i18nKey = i18nPrefix .. 'option_swapcameracenterbutton',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 	},
 	lblSelectionIdle = { type='label', name='Idle Units', path='Hotkeys/Selection', },
 	selectprecbomber = { type = 'button',
-		name = 'Select idle precision bomber',
-		desc = 'Selects an idle, armed precision bomber. Use multiple times to select more. Deselects any units which are not idle, armed precision bombers.',
+		i18nKey = i18nPrefix .. 'option_selectidleprecisionbomber',
 		action = 'selectprecbomber',
 		path = 'Hotkeys/Selection',
 		dontRegisterAction = true,
 	},
 	selectidlecon = { type = 'button',
-		name = 'Select idle constructor',
-		desc = 'Selects an idle constructor. Use multiple times to select more. Deselects any units which are not idle constructors.',
+		i18nKey = i18nPrefix .. 'option_selectidleconstructor',
 		action = 'selectidlecon',
 		path = 'Hotkeys/Selection',
 		dontRegisterAction = true,
 	},
 	selectidlecon_all = { type = 'button',
-		name = 'Select all idle constructors',
+		i18nKey = i18nPrefix .. 'option_selectallidleconstructors',
 		action = 'selectidlecon_all',
 		path = 'Hotkeys/Selection',
 		dontRegisterAction = true,
 	},
 	lblSelection = { type='label', name='Quick Selection Bar', path='Hotkeys/Selection', },
 	selectcomm = { type = 'button',
-		name = 'Select Commander',
+		i18nKey = i18nPrefix .. 'option_selectcommander',
 		action = 'selectcomm',
 		path = 'Hotkeys/Selection',
 		dontRegisterAction = true,
 	},
 	horPaddingLeft = {
-		name = 'Horizontal Padding Left',
+		i18nKey = i18nPrefix .. 'option_horizontalpaddingleft',
 		type = 'number',
 		value = 0,
 		advanced = true,
@@ -291,7 +289,7 @@ options = {
 		OnChange = OptionsUpdateLayout,
 	},
 	horPaddingRight = {
-		name = 'Horizontal Padding Right',
+		i18nKey = i18nPrefix .. 'option_horizontalpaddingright',
 		type = 'number',
 		value = 0,
 		advanced = true,
@@ -299,7 +297,7 @@ options = {
 		OnChange = OptionsUpdateLayout,
 	},
 	vertPadding = {
-		name = 'Vertical Padding',
+		i18nKey = i18nPrefix .. 'option_verticalpadding',
 		type = 'number',
 		value = 0,
 		advanced = true,
@@ -307,7 +305,7 @@ options = {
 		OnChange = OptionsUpdateLayout,
 	},
 	buttonSpacing = {
-		name = 'Button Spacing',
+		i18nKey = i18nPrefix .. 'option_buttonspacing',
 		type = 'number',
 		value = 0,
 		advanced = true,
@@ -315,7 +313,7 @@ options = {
 		OnChange = OptionsUpdateLayout,
 	},
 	minButtonSpaces = {
-		name = 'Minimum Button Space',
+		i18nKey = i18nPrefix .. 'option_minimumbuttonspace',
 		type = 'number',
 		value = 0,
 		advanced = true,
@@ -323,7 +321,7 @@ options = {
 		OnChange = OptionsUpdateLayout,
 	},
 	specSpaceOverride = {
-		name = 'Spectating Space Override',
+		i18nKey = i18nPrefix .. 'option_spectatingspaceoverride',
 		desc = 'Size of the spacer which is present while spectating with "Only keep space when spectating".',
 		type = 'number',
 		value = 50,
@@ -332,7 +330,7 @@ options = {
 		OnChange = OptionsUpdateLayout,
 	},
 	fancySkinning = {
-		name = 'Fancy Skinning',
+		i18nKey = i18nPrefix .. 'option_fancyskinning',
 		type = 'radioButton',
 		value = 'panel',
 		items = {
@@ -349,7 +347,7 @@ options = {
 		noHotkey = true,
 	},
 	leftsideofscreen = {
-		name = 'Left side of screen',
+		i18nKey = i18nPrefix .. 'option_leftsideofscreen',
 		type = 'bool',
 		value = true,
 		hidden = true,

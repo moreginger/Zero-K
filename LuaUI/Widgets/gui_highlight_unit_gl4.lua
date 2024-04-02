@@ -65,11 +65,12 @@ local function UpdateTeamColors()
 	Spring.Echo("enemyUnitColor", enemyUnitColor[1], enemyUnitColor[2], enemyUnitColor[3])
 end
 
+i18nPrefix = 'highlightunitgl4_'
 options_path = 'Settings/Graphics/Unit Visibility'
 options_order = { 'highlightStrength', 'highlightSat', 'selfHoverSameAsAllies'}
 options = {
 	highlightStrength = {
-		name = "Mouse hover highlight strength",
+		i18nKey = i18nPrefix .. 'option_mousehoverhighlightstrength',
 		type = "number",
 		value = 0.35,
 		min = 0,
@@ -77,7 +78,7 @@ options = {
 		step = 0.01,
 	},
 	highlightSat = {
-		name = "Mouse hover highlight saturation",
+		i18nKey = i18nPrefix .. 'option_mousehoverhighlightsaturation',
 		type = "number",
 		value = 0.5,
 		min = 0,
@@ -86,7 +87,7 @@ options = {
 		OnChange = UpdateTeamColors
 	},
 	selfHoverSameAsAllies = {
-		name = 'Use ally hover cover for self',
+		i18nKey = i18nPrefix .. 'option_useallyhovercoverforself',
 		type = 'bool',
 		value = false,
 		OnChange = UpdateTeamColors

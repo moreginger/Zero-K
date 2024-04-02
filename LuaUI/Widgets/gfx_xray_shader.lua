@@ -23,18 +23,17 @@ function widget:GetInfo()
   }
 end
 
+i18nPrefix = 'xrayshader_'
 options_path = 'Settings/Graphics/Unit Visibility/XRay Shader'
 options = {
         zMin = {
-                name = 'Minimum distance',
-                desc = 'Minimum distance for XRay effect to show up',
+                i18nKey = i18nPrefix .. 'option_minimumdistance',
                 type = 'number',
                 min = 0, max = 10000, step = 100,
                 value = 1200,
         },
         zMax = {
-                name = 'Maximum distance',
-                desc = 'Distance at which XRay effect is at full strength',
+                i18nKey = i18nPrefix .. 'option_maximumdistance',
                 type = 'number',
                 min = 0, max = 10000, step = 100,
                 value = 4200,

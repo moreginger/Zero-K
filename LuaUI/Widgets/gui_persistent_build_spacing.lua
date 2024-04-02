@@ -86,6 +86,7 @@ local function UpdateKeys()
 end
 
 local hotkeys_path = 'Hotkeys/Construction'
+i18nPrefix = 'persistentbuildspacing_'
 options_path = 'Settings/Interface/Building Placement'
 options_order = {
 	'text_hotkey',
@@ -99,23 +100,21 @@ options_order = {
 options = {
 	-- hotkeys
 	text_hotkey = {
-		name            = 'Structure Placement Modifiers',
+		i18nKey = i18nPrefix .. 'option_structureplacementmodifiers',
 		type            = 'label',
 		path            = hotkeys_path
 	},
 	hotkey_inc = {
-		name            = 'Increase Build Spacing',
+		i18nKey = i18nPrefix .. 'option_increasebuildspacing',
 		type            = 'button',
-		desc            = 'Increase the spacing between structures queued in a line or rectangle. Hold Shift to queue a line of structures. Add Alt to queue a rectangle. Add Ctrl to queue a hollow rectangle.',
 		action          = "buildspacing inc",
 		bindWithAny     = true,
 		path            = hotkeys_path,
 		OnHotkeyChange  = UpdateKeys,
 	},
 	hotkey_dec = {
-		name            = 'Decrease Build Spacing',
+		i18nKey = i18nPrefix .. 'option_decreasebuildspacing',
 		type            = 'button',
-		desc            = 'Decrease the spacing between structures queued in a line or rectangle. Hold Shift to queue a line of structures. Add Alt to queue a rectangle. Add Ctrl to queue a hollow rectangle.',
 		action          = "buildspacing dec",
 		bindWithAny     = true,
 		path            = hotkeys_path,
@@ -123,31 +122,28 @@ options = {
 		
 	},
 	hotkey_facing_inc = {
-		name            = 'Rotate Counterclockwise',
+		i18nKey = i18nPrefix .. 'option_rotatecounterclockwise',
 		type            = 'button',
-		desc            = 'Rotate the structure placement blueprint counterclockwise.',
 		action          = "buildfacing inc",
 		bindWithAny     = true,
 		path            = hotkeys_path,
 	},
 	hotkey_facing_dec = {
-		name            = 'Rotate Clockwise',
+		i18nKey = i18nPrefix .. 'option_rotateclockwise',
 		type            = 'button',
-		desc            = 'Rotate the structure placement blueprint clockwise.',
 		action          = "buildfacing dec",
 		bindWithAny     = true,
 		path            = hotkeys_path,
 	},
 	----- wheel and visualization implementation
 	spacing_label = {
-		name            = 'Build Spacing',
+		i18nKey = i18nPrefix .. 'option_buildspacing',
 		type            = 'label',
 	},
 	-- wheel
 	wheel_spacing = {
-		name            = 'Change with Shift + MouseWheel',
+		i18nKey = i18nPrefix .. 'option_changewithshiftmousewheel',
 		type            = 'bool',
-		desc            = 'Change the spacing Shift down and the MouseWheel',
 		value           = wheelSpacing,
 		noHotkey        = true,
 		OnChange        = function(self)
@@ -157,7 +153,7 @@ options = {
 		children        = {'reverse_wheel'}
 	},
 	reverse_wheel = {
-		name            = '..reversed.',
+		i18nKey = i18nPrefix .. 'option_reversed',
 		type            = 'bool',
 		value           = wheelValue == -1,
 		noHotkey        = true,
@@ -168,9 +164,8 @@ options = {
 	},
 	-- rectangle showing options
 	show_spacing_rects = {
-		name            = 'Visualise spacing',
+		i18nKey = i18nPrefix .. 'option_visualisespacing',
 		type            = 'bool',
-		desc            = "Briefly show spaced rectangles in all directions around the cursor",
 		value           = showSpacingRects,
 		noHotkey        = true,
 		OnChange        = function(self)
@@ -181,9 +176,8 @@ options = {
 	},
 	
 	show_only_2_rects = {
-		name            = '..of only two rectangles, ',
+		i18nKey = i18nPrefix .. 'option_ofonlytworectangles',
 		type            = 'bool',
-		desc            = "If 8 rectangles bug you too much, only show 2 horizontal rectangles",
 		value           = only2Rects,
 		noHotkey        = true,
 		OnChange        = function(self)
@@ -193,7 +187,7 @@ options = {
 		parents         = {'show_spacing_rects'}
 	},
 	show_rects_only_on_change = {
-		name            = '..only on spacing change, ',
+		i18nKey = i18nPrefix .. 'option_onlyonspacingchange',
 		type            = 'bool',
 		desc            = "If you don't want to see those rectangles until you change the current spacing",
 		value           = showRectsOnChange,
@@ -204,9 +198,8 @@ options = {
 		parents         = {'show_spacing_rects'}
 	},
 	rects_follow_ground = {
-		name            = '..following the ground height,',
+		i18nKey = i18nPrefix .. 'option_followingthegroundheight',
 		type            = 'bool',
-		desc            = "..unless, of course, if it should float !",
 		noHotkey        = true,
 		value           = followGround,
 		OnChange        = function(self)
@@ -215,9 +208,8 @@ options = {
 		parents         = {'show_spacing_rects'}
 	},
 	stick_to_wrong_grid = {
-		name            = '..according to the placement grid,',
+		i18nKey = i18nPrefix .. 'option_accordingtotheplacementgrid',
 		type            = 'bool',
-		desc            = "In case of building moving units, the placement grid is misleading, uncheck this is you want to see the rectangles following where the placements will really occur.",
 		noHotkey        = true,
 		value           = stickToWrongGrid,
 		OnChange        = function(self)
@@ -226,9 +218,8 @@ options = {
 		parents         = {'show_spacing_rects'}
 	},
 	rects_bad_color = {
-		name            = '..with bad colors for bad placements,',
+		i18nKey = i18nPrefix .. 'option_withbadcolorsforbadplacements',
 		type            = 'bool',
-		desc            = "Reddish color if it cannot be placed",
 		noHotkey        = true,
 		value           = withBadColor,
 		OnChange        = function(self)
@@ -237,7 +228,7 @@ options = {
 		parents         = {'show_spacing_rects'}
 	},
 	show_time_rects = {
-		name            = '... for this many seconds.',
+		i18nKey = i18nPrefix .. 'option_forthismanyseconds',
 		type            = 'number',
 		min             = 0.1,
 		max             = 10.1,
@@ -253,9 +244,8 @@ options = {
 	},
 	-- value showing options
 	show_spacing_value = {
-		name            = 'Show spacing value',
+		i18nKey = i18nPrefix .. 'option_showspacingvalue',
 		type            = 'bool',
-		desc            = "Briefly show separation value",
 		value           = showSpacingValue,
 		noHotkey        = true,
 		OnChange        = function(self)
@@ -265,7 +255,7 @@ options = {
 	},
 	
 	show_value_only_on_change = {
-		name            = '..only on spacing change, ',
+		i18nKey = i18nPrefix .. 'option_onlyonspacingchange',
 		type            = 'bool',
 		desc            = "If you don't want to see the above helper until you change the current spacing",
 		value           = showValueOnChange,
@@ -277,7 +267,7 @@ options = {
 	},
 	
 	show_time_value = {
-		name            = '... for this many seconds.',
+		i18nKey = i18nPrefix .. 'option_forthismanyseconds',
 		type            = 'number',
 		min             = 0.1,
 		max             = 10.1,

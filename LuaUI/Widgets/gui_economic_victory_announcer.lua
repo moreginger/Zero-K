@@ -29,6 +29,7 @@ end
 
 local enabled = false
 
+i18nPrefix = 'economicvictoryannouncer_'
 options_path = 'Settings/Toolbox/Economy Announcer'
 
 options_order = {
@@ -41,7 +42,7 @@ options_order = {
  
 options = {
 	enable = {
-		name  = "Enable economic victory announcer",
+		i18nKey = i18nPrefix .. 'option_enableeconomicvictoryannouncer',
 		type  = "bool",
 		value = false,
 		OnChange = function(self)
@@ -56,25 +57,24 @@ options = {
 		desc = "Announces the total assets of the teams at set times. For use with a manually run economic victory condition."
 	},
 	sayResult = {
-		name  = "Say results publicly (adjudicators only)",
+		i18nKey = i18nPrefix .. 'option_sayresultspubliclyadjudicatorsonly',
 		type  = "bool",
 		value = false,
 		noHotkey = true,
 		desc = "Enable to say the result of the match publicly. Only for adjudicators."
 	},
 	firstCall = {
-		name  = "First check time",
+		i18nKey = i18nPrefix .. 'option_firstchecktime',
 		type  = "number",
 		value = 25, min = 0, max = 90, step = 1,
 	},
 	secondCall = {
-		name  = "Second check time",
+		i18nKey = i18nPrefix .. 'option_secondchecktime',
 		type  = "number",
 		value = 30, min = 0, max = 90, step = 1,
 	},
 	econMultiplier = {
-		name  = "Economy multiplier",
-		desc  = "A team wins if it has this times more value than any other team.",
+		i18nKey = i18nPrefix .. 'option_economymultiplier',
 		type  = "number",
 		value = 2, min = 1, max = 5, step = 0.1,
 	},

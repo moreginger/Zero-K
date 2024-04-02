@@ -8,27 +8,25 @@ function widget:GetInfo() return {
 
 VFS.Include("LuaRules/Configs/customcmds.h.lua") -- for CMD_RAW_MOVE
 
+i18nPrefix = 'miscdefaultcommandreplacements_'
 options_path = 'Settings/Unit Behaviour'
 options = {
 	guard_facs = {
-		name = "Right click guards factories",
+		i18nKey = i18nPrefix .. 'option_rightclickguardsfactories',
 		type = "bool",
 		value = true,
-		desc = "If enabled, rightclicking a factory will always Guard it.\nIf disabled, the command can be Repair.",
 		noHotkey = true,
 	},
 	guard_cons = {
-		name = "Right click guards constructors",
+		i18nKey = i18nPrefix .. 'option_rightclickguardsconstructors',
 		type = "bool",
 		value = true,
-		desc = "If enabled, rightclicking a constructor will always Guard it.\nIf disabled, the command can be Repair.",
 		noHotkey = true,
 	},
 	set_target_instead_of_attack = {
-		name = "Right click sets target instead of attacking",
+		i18nKey = i18nPrefix .. 'option_rightclicksetstargetinsteadofattacking',
 		type = "bool",
 		value = false,
-		desc = "If enabled, rightclicking an enemy will give the Set Target command.\nIf disabled, the command is Attack.",
 		noHotkey = true,
 	},
 }

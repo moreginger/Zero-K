@@ -80,6 +80,7 @@ end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+i18nPrefix = 'chiliresourcebarsclassic_'
 options_path = 'Settings/HUD Panels/Resource Bars'
 
 local function option_workerUsageUpdate()
@@ -94,19 +95,19 @@ options = {
 	onlyShowExpense = {name='Only Show Expense', type='bool', value=false},
 	enableReserveBar = {name='Enable Reserve', type='bool', value=false, tooltip = "Enables high priority reserve"},
 	defaultEnergyReserve = {
-		name = "Initial Energy Reserve",
+		i18nKey = i18nPrefix .. 'option_initialenergyreserve',
 		type = "number",
 		value = 0.05, min = 0, max = 1, step = 0.01,
 	},
 	defaultMetalReserve = {
-		name = "Initial Metal Reserve",
+		i18nKey = i18nPrefix .. 'option_initialmetalreserve',
 		type = "number",
 		value = 0, min = 0, max = 1, step = 0.01,
 	},
 	workerUsage = {name = "Show Worker Usage", type = "bool", value=false, OnChange = option_workerUsageUpdate},
 	energyFlash = {name = "Energy Stall Flash", type = "number", value=0.1, min=0,max=1,step=0.02},
 	opacity = {
-		name = "Opacity",
+		i18nKey = i18nPrefix .. 'option_opacity',
 		type = "number",
 		value = 0, min = 0, max = 1, step = 0.01,
 		OnChange = function(self) window.color = {1,1,1,self.value}; window:Invalidate() end,

@@ -37,6 +37,7 @@ local rotateFollowing = false
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+i18nPrefix = 'combooverheadfreecameraexperimental_'
 options_path = 'Settings/Camera/COFC Controls'
 local zoomPath = 'Settings/Camera/COFC Zoom Behaviour'
 local rotatePath = 'Settings/Camera/COFC Rotation Behaviour'
@@ -156,7 +157,7 @@ options = {
 	lblFollowUnit = {name='Unit Following', type='label', path=cameraFollowPath},
 
 	topBottomEdge = {
-		name = 'Top/Bottom Edge Behaviour',
+		i18nKey = i18nPrefix .. 'option_topbottomedgebehaviour',
 		type = 'radioButton',
 		value = 'pan',
 		items = {
@@ -169,7 +170,7 @@ options = {
 	},
 
 	leftRightEdge = {
-		name = 'Left/Right Edge Behaviour',
+		i18nKey = i18nPrefix .. 'option_leftrightedgebehaviour',
 		type = 'radioButton',
 		value = 'pan',
 		items = {
@@ -182,7 +183,7 @@ options = {
 	},
 
 	middleMouseButton = {
-		name = 'Middle Mouse Button Behaviour',
+		i18nKey = i18nPrefix .. 'option_middlemousebuttonbehaviour',
 		type = 'radioButton',
 		value = 'pan',
 		items = {
@@ -195,8 +196,7 @@ options = {
 		advanced = true,
 	},
 	smoothness = {
-		name = 'Smoothness',
-		desc = "Controls how smoothly the camera moves.",
+		i18nKey = i18nPrefix .. 'option_smoothness',
 		type = 'number',
 		min = 0.0, max = 0.8, step = 0.1,
 		value = 0.3,
@@ -213,7 +213,7 @@ options = {
 
 
 	helpwindow = {
-		name = 'COFCam Help',
+		i18nKey = i18nPrefix .. 'option_cofcamhelp',
 		type = 'text',
 		value = [[
 Complete Overhead/Free Camera has six actions:
@@ -226,37 +226,35 @@ Complete Overhead/Free Camera has six actions:
 	},
 
 	zoominfactor = { --should be lower than zoom-out-speed to help user aim tiny units
-		name = 'Zoom-in speed',
+		i18nKey = i18nPrefix .. 'option_zoominspeed',
 		type = 'number',
 		min = 0.1, max = 1, step = 0.05,
 		value = 0.5,
 		path = zoomPath,
 	},
 	zoomoutfactor = { --should be higher than zoom-in-speed to help user escape to bigger picture
-		name = 'Zoom-out speed',
+		i18nKey = i18nPrefix .. 'option_zoomoutspeed',
 		type = 'number',
 		min = 0.1, max = 1, step = 0.05,
 		value = 0.8,
 		path = zoomPath,
 	},
 	invertzoom = {
-		name = 'Invert zoom',
-		desc = 'Invert the scroll wheel direction for zooming.',
+		i18nKey = i18nPrefix .. 'option_invertzoom',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 		path = zoomPath,
 	},
 	invertalt = {
-		name = 'Invert altitude',
-		desc = 'Invert the scroll wheel direction for altitude.',
+		i18nKey = i18nPrefix .. 'option_invertaltitude',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 		path = zoomPath,
 	},
 	zoomin = {
-		name = 'Zoom In',
+		i18nKey = i18nPrefix .. 'option_zoomin',
 		type = 'radioButton',
 		value = 'toCursor',
 		items = {
@@ -267,7 +265,7 @@ Complete Overhead/Free Camera has six actions:
 		path = zoomPath,
 	},
 	zoomout = {
-		name = 'Zoom Out',
+		i18nKey = i18nPrefix .. 'option_zoomout',
 		type = 'radioButton',
 		value = 'fromCenter',
 		items = {
@@ -278,8 +276,7 @@ Complete Overhead/Free Camera has six actions:
 		path = zoomPath,
 	},
 	zoomouttocenter = {
-		name = 'Zoom out to center',
-		desc = 'Center the map as you zoom out.',
+		i18nKey = i18nPrefix .. 'option_zoomouttocenter',
 		type = 'bool',
 		value = true,
 		OnChange = function(self)
@@ -294,24 +291,21 @@ Complete Overhead/Free Camera has six actions:
 		path = zoomPath,
 	},
 	drifttocenter = {
-		name = 'Drift zoom target to center',
-		desc = 'Moves object under cursor to screen center. Only works when zooming to cursor.',
+		i18nKey = i18nPrefix .. 'option_driftzoomtargettocenter',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 		path = zoomPath,
 	},
 	tiltedzoom = {
-		name = 'Tilt camera while zooming',
-		desc = 'Have the camera tilt while zooming. Camera faces ground when zoomed out, and looks out nearly parallel to ground when fully zoomed in',
+		i18nKey = i18nPrefix .. 'option_tiltcamerawhilezooming',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 		path = zoomPath,
 	},
 	tiltzoomfactor = {
-		name = 'Tilt amount',
-		desc = 'How tilted the camera is when fully zoomed in. 0.1 is fully tilted, 2.0 is not tilted.',
+		i18nKey = i18nPrefix .. 'option_tiltamount',
 		type = 'number',
 		min = 0.1, max = 2, step = 0.1,
 		value = 1.0,
@@ -320,15 +314,14 @@ Complete Overhead/Free Camera has six actions:
 	},
 
 	rotatefactor = {
-		name = 'Rotation speed',
+		i18nKey = i18nPrefix .. 'option_rotationspeed',
 		type = 'number',
 		min = 0.5, max = 10, step = 0.5,
 		value = 2,
 		path = rotatePath,
 	},
 	rotsmoothness = {
-		name = 'Rotation Smoothness',
-		desc = "Controls how smoothly the camera rotates.",
+		i18nKey = i18nPrefix .. 'option_rotationsmoothness',
 		type = 'number',
 		min = 0.0, max = 0.8, step = 0.1,
 		value = 0.1,
@@ -350,24 +343,21 @@ Complete Overhead/Free Camera has six actions:
 	-- 	noHotkey = true,
 	-- },
 	targetmouse = {
-		name = 'Rotate world origin at cursor',
-		desc = 'Rotate world using origin at the cursor rather than the center of screen.',
+		i18nKey = i18nPrefix .. 'option_rotateworldoriginatcursor',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 		path = rotatePath,
 	},
 	inverttilt = {
-		name = 'Invert tilt',
-		desc = 'Invert the tilt direction when using ctrl+mousewheel.',
+		i18nKey = i18nPrefix .. 'option_inverttilt',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 		path = rotatePath,
 	},
 	overridetilt = {
-		name = 'Override tilt',
-		desc = 'Disable tilt, instead keeping the camera at a fixed tilt set by Tilt override value.',
+		i18nKey = i18nPrefix .. 'option_overridetilt',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
@@ -379,7 +369,7 @@ Complete Overhead/Free Camera has six actions:
 		path = rotatePath,
 	},
 	tiltoverride = {
-		name = 'Tilt override value',
+		i18nKey = i18nPrefix .. 'option_tiltoverridevalue',
 		type = 'number',
 		min = 0.01, max = 1, step = 0.01,
 		value = 1,
@@ -391,14 +381,14 @@ Complete Overhead/Free Camera has six actions:
 		path = rotatePath,
 	},
 	tiltfactor = {
-		name = 'Tilt speed',
+		i18nKey = i18nPrefix .. 'option_tiltspeed',
 		type = 'number',
 		min = 2, max = 40, step = 2,
 		value = 10,
 		path = rotatePath,
 	},
 	groundrot = {
-		name = "Rotate When Camera Hits Ground",
+		i18nKey = i18nPrefix .. 'option_rotatewhencamerahitsground',
 		desc = "If world-rotation motion causes the camera to hit the ground, camera-rotation motion takes over. Doesn't apply in Free Mode.",
 		type = 'bool',
 		value = true,
@@ -408,37 +398,35 @@ Complete Overhead/Free Camera has six actions:
 	},
 
 	speedFactor = {
-		name = 'Mouse scroll speed',
-		desc = 'This speed applies to scrolling with the middle button.',
+		i18nKey = i18nPrefix .. 'option_mousescrollspeed',
 		type = 'number',
 		min = 10, max = 100,
 		value = 25,
 		path = scrollPath,
 	},
 	speedFactor_mult = {
-		name = 'Multiply the above by 10',
+		i18nKey = i18nPrefix .. 'option_multiplytheaboveby10',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 		path = scrollPath,
 	},
 	speedFactor_k = {
-		name = 'Keyboard/edge scroll speed',
-		desc = 'This speed applies to edge scrolling and keyboard keys.',
+		i18nKey = i18nPrefix .. 'option_keyboardedgescrollspeed',
 		type = 'number',
 		min = 1, max = 100,
 		value = 40,
 		path = scrollPath,
 	},
 	speedFactor_k_mult = {
-		name = 'Multiply the above by 10',
+		i18nKey = i18nPrefix .. 'option_multiplytheaboveby10',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 		path = scrollPath,
 	},
 	invertscroll = {
-		name = "Invert scrolling direction",
+		i18nKey = i18nPrefix .. 'option_invertscrollingdirection',
 		desc = "Invert scrolling direction (doesn't apply to smoothscroll).",
 		type = 'bool',
 		value = true,
@@ -446,23 +434,21 @@ Complete Overhead/Free Camera has six actions:
 		path = scrollPath,
 	},
 	smoothscroll = {
-		name = 'Smooth scrolling',
-		desc = 'Use smoothscroll method when mouse scrolling.',
+		i18nKey = i18nPrefix .. 'option_smoothscrolling',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 		path = scrollPath,
 	},
 	smoothmeshscroll = {
-		name = 'Smooth Mesh Scrolling',
-		desc = 'A smoother way to scroll. Applies to all types of mouse/keyboard scrolling.',
+		i18nKey = i18nPrefix .. 'option_smoothmeshscrolling',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 		path = scrollPath,
 	},
 	scrollhelp = {
-		name = 'Scroll Hotkeys',
+		i18nKey = i18nPrefix .. 'option_scrollhotkeys',
 		type = 'text',
 		value = [[The scroll keys (arrow keys by default) can be set in Hotkeys/Camera.]],
 		path = scrollPath,
@@ -480,31 +466,28 @@ Complete Overhead/Free Camera has six actions:
 	disablelabel = {name='Hotkeys and Modifiers', type='label', path=miscPath},
 
 	disableshift = {
-		name = 'Disable Shift',
-		desc = 'Make the camera unaffected by holding Shift.',
+		i18nKey = i18nPrefix .. 'option_disableshift',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 		path = miscPath,
 	},
 	disablectrl = {
-		name = 'Disable Ctrl',
-		desc = 'Make the camera unaffected by holding Ctrl.',
+		i18nKey = i18nPrefix .. 'option_disablectrl',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 		path = miscPath,
 	},
 	disablealt = {
-		name = 'Disable Alt',
-		desc = 'Make the camera unaffected by holding Alt.',
+		i18nKey = i18nPrefix .. 'option_disablealt',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 		path = miscPath,
 	},
 	fov = {
-		name = 'Field of View (Degrees)',
+		i18nKey = i18nPrefix .. 'option_fieldofviewdegrees',
 		--desc = "FOV (25 deg - 100 deg).",
 		type = 'number',
 		min = 10, max = 100, step = 5,
@@ -514,38 +497,34 @@ Complete Overhead/Free Camera has six actions:
 		path=miscPath,
 	},
 	overviewmode = {
-		name = "Toggle map overview",
-		desc = "Go to overview mode, then restore view to cursor position.",
+		i18nKey = i18nPrefix .. 'option_togglemapoverview',
 		type = 'button',
 		hotkey = {key='tab', mod=''},
 		OnChange = function(self) OverviewAction() end,
 		path=miscPath,
 	},
 	overviewset = {
-		name = "Set Overview Viewpoint",
+		i18nKey = i18nPrefix .. 'option_setoverviewviewpoint',
 		desc = "Save the current view as the new overview mode viewpoint. Use 'Reset Camera' to remove it.",
 		type = 'button',
 		OnChange = function(self) OverviewSetAction() end,
 		path=miscPath,
 	},
 	rotatebackfromov = {
-		name = "Rotate Back From Overview",
-		desc = "When returning from overview mode, rotate the camera to its original position (only applies when you have set an overview viewpoint).",
+		i18nKey = i18nPrefix .. 'option_rotatebackfromoverview',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 		path=miscPath,
 	},
 	resetcam = {
-		name = "Reset Camera",
-		desc = "Reset the camera position and orientation. Map a hotkey or use <Ctrl> + <Alt> + <Middleclick>",
+		i18nKey = i18nPrefix .. 'option_resetcamera',
 		type = 'button',
         -- OnChange defined later
 		path=miscPath,
 	},
 	freemode = {
-		name = "FreeMode (risky)",
-		desc = "Be free. Camera movement not bound to map edge. USE AT YOUR OWN RISK!\nTips: press TAB if you get lost.",
+		i18nKey = i18nPrefix .. 'option_freemoderisky',
 		type = 'bool',
 		advanced = true,
 		value = false,
@@ -566,23 +545,21 @@ Complete Overhead/Free Camera has six actions:
 		OnChange = function(self) Spring.Echo("COFC: follow cursor " .. (self.value and "active" or "inactive")) end,
 	},
 	followautozoom = {
-		name = "Auto zoom",
+		i18nKey = i18nPrefix .. 'option_autozoom',
 		desc = "Auto zoom in and out while following player's cursor (zoom level will represent player's focus). \n\nDO NOT enable this if you want to control the zoom level yourself.",
 		type = 'bool',
 		value = false,
 		path = cameraFollowPath,
 	},
 	tpv_height_mult = {
-		name = "Over-the-shoulder height mult",
-		desc = "Height multiplier for looking over the shoulter.",
+		i18nKey = i18nPrefix .. 'option_overtheshoulderheightmult',
 		type = 'number',
 		min = 1, max = 2, step = 0.05,
 		value = 1,
 		path = cameraFollowPath,
 	},
 	followinscrollspeed = {
-		name = "On Screen Tracking Speed",
-		desc = "Tracking speed while cursor is on-screen. \n\nRecommend: Lowest (prevent jerky movement)",
+		i18nKey = i18nPrefix .. 'option_onscreentrackingspeed',
 		type = 'number',
 		min = 1, max = 14, step = 1,
 		mid = (14+1)/2,
@@ -591,8 +568,7 @@ Complete Overhead/Free Camera has six actions:
 		path = cameraFollowPath,
 	},
 	followoutscrollspeed = {
-		name = "Off Screen Tracking Speed",
-		desc = "Tracking speed while cursor is off-screen. \n\nRecommend: Highest (prevent missed action)",
+		i18nKey = i18nPrefix .. 'option_offscreentrackingspeed',
 		type = 'number',
 		min = 2, max = 15, step = 1,
 		mid = (15+2)/2,
@@ -601,8 +577,7 @@ Complete Overhead/Free Camera has six actions:
 		path = cameraFollowPath,
 	},
 	followzoommindist = {
-		name = "Closest Zoom",
-		desc = "The closest zoom. Default: 500",
+		i18nKey = i18nPrefix .. 'option_closestzoom',
 		type = 'number',
 		min = 200, max = 10000, step = 100,
 		value = 500,
@@ -610,8 +585,7 @@ Complete Overhead/Free Camera has six actions:
 		path = cameraFollowPath,
 	},
 	followzoommaxdist = {
-		name = "Farthest Zoom",
-		desc = "The furthest zoom. Default: 2000",
+		i18nKey = i18nPrefix .. 'option_farthestzoom',
 		type = 'number',
 		min = 200, max = 10000, step = 100,
 		value = 2000,
@@ -619,8 +593,7 @@ Complete Overhead/Free Camera has six actions:
 		path = cameraFollowPath,
 	},
 	followzoominspeed = {
-		name = "Zoom-in Speed",
-		desc = "Zoom-in speed when cursor is on-screen. Default: 50%",
+		i18nKey = i18nPrefix .. 'option_zoominspeed',
 		type = 'number',
 		min = 0.1, max = 1, step = 0.05,
 		value = 0.5,
@@ -628,8 +601,7 @@ Complete Overhead/Free Camera has six actions:
 		path = cameraFollowPath,
 	},
 	followzoomoutspeed = {
-		name = "Zoom-out Speed",
-		desc = "Zoom-out speed when cursor is at screen edge and off-screen. Default: 50%",
+		i18nKey = i18nPrefix .. 'option_zoomoutspeed',
 		type = 'number',
 		min = 0.1, max = 1, step = 0.05,
 		value = 0.5,
@@ -640,8 +612,7 @@ Complete Overhead/Free Camera has six actions:
 
 	-- follow unit
 	trackmode = {
-		name = "Activate Trackmode",
-		desc = "Track the selected unit (mouse midclick to exit mode)",
+		i18nKey = i18nPrefix .. 'option_activatetrackmode',
 		type = 'button',
         hotkey = {key='t', mod='alt+'},
 		path = cameraFollowPath,
@@ -657,37 +628,32 @@ Complete Overhead/Free Camera has six actions:
 	},
 
 	persistenttrackmode = {
-		name = "Persistent trackmode state",
-		desc = "Trackmode will not cancel when deselecting unit. Trackmode will always attempt to track newly selected unit. Press mouse midclick to cancel this mode.",
+		i18nKey = i18nPrefix .. 'option_persistenttrackmodestate',
 		type = 'bool',
 		value = false,
 		path = cameraFollowPath,
 	},
 
 	ctrl_retains_track = {
-		name = "Ctrl retains track",
-		desc = "Trackmode will (probably) cancel when doing the type of camera rotation enabled by Ctrl.",
+		i18nKey = i18nPrefix .. 'option_ctrlretainstrack',
 		type = 'bool',
 		value = false,
 		path = cameraFollowPath,
 	},
 	alt_retains_track = {
-		name = "Alt retains track",
-		desc = "Trackmode will (probably) cancel when doing the type of camera rotation enabled by Alt.",
+		i18nKey = i18nPrefix .. 'option_altretainstrack',
 		type = 'bool',
 		value = false,
 		path = cameraFollowPath,
 	},
 	track_while_rotate = {
-		name = "Track while rotating",
-		desc = "Trackmode works while rotating, but may cause a bug.",
+		i18nKey = i18nPrefix .. 'option_trackwhilerotating',
 		type = 'bool',
 		value = false,
 		path = cameraFollowPath,
 	},
 	track_rotate_disable_dist_change = {
-		name = "Track rotate fix zoom",
-		desc = "Disable zoom changes while track rotating.",
+		i18nKey = i18nPrefix .. 'option_trackrotatefixzoom',
 		type = 'bool',
 		value = false,
 		path = cameraFollowPath,
@@ -695,8 +661,7 @@ Complete Overhead/Free Camera has six actions:
 	
 
     thirdpersontrack = {
-		name = "Enter 3rd Person Trackmode",
-		desc = "3rd Person track the selected unit (mouse midclick to exit mode). Press arrow key to jump to nearby units, or move mouse to edge of screen to jump to current unit selection (will exit mode if no selection).",
+		i18nKey = i18nPrefix .. 'option_enter3rdpersontrackmode',
 		type = 'button',
 		hotkey = {key='k', mod='alt+'},
 		path = cameraFollowPath,
@@ -723,15 +688,13 @@ Complete Overhead/Free Camera has six actions:
 
 	label_controlgroups = {name='Pan To Cluster', type='label', path = 'Settings/Interface/Control Groups'},
 	enableCycleView = {
-		name = "Pan to cluster",
+		i18nKey = i18nPrefix .. 'option_pantocluster',
 		type = 'bool',
 		value = false,
 		path = 'Settings/Interface/Control Groups',
-		desc = "If you double-tap the group numbers (1,2,3 etc.) it will move the camera position to different clusters of units within the group rather than to the average position of the entire group.",
 	},
 	groupSelectionTapTimeout = {
-		name = 'Pan to cluster tap timeout',
-		desc = "How quickly do you have to double-tap group numbers to move the camera? Smaller timeout means faster tapping.",
+		i18nKey = i18nPrefix .. 'option_pantoclustertaptimeout',
 		type = 'number',
 		min = 0.0, max = 5.0, step = 0.1,
 		value = 2.0,

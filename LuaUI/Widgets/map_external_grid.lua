@@ -46,14 +46,14 @@ local featureChance = 0.01
 local noFeatureRange = 0
 ]]--
 
+i18nPrefix = 'externalvrgrid_'
 options_path = 'Settings/Graphics/Map/VR Grid'
 options_order = {"mirrorHeightMap","res","range","northSouthText"}
 options = {
 	mirrorHeightMap = {
-		name = "Mirror heightmap",
+		i18nKey = i18nPrefix .. 'option_mirrorheightmap',
 		type = 'bool',
 		value = true,
-		desc = 'Mirrors heightmap on the grid',
 		OnChange = function(self)
 			if DspLst then
 				gl.DeleteList(DspLst)
@@ -62,14 +62,13 @@ options = {
 		end,
 	},
 	res = {
-		name = "Tile size (64-512)",
+		i18nKey = i18nPrefix .. 'option_tilesize64512',
 		advanced = true,
 		type = 'number',
 		min = 64,
 		max = 512,
 		step = 64,
 		value = 512,
-		desc = 'Sets tile size (lower = more detail)\nStepsize is 64; recommend powers of 2',
 		OnChange = function(self)
 			if DspLst then
 				gl.DeleteList(DspLst)
@@ -78,14 +77,13 @@ options = {
 		end,
 	},
 	range = {
-		name = "Range (1024-8192)",
+		i18nKey = i18nPrefix .. 'option_range10248192',
 		advanced = true,
 		type = 'number',
 		min = 1024,
 		max = 8192,
 		step = 256,
 		value = 3072,
-		desc = 'How far outside the map to draw',
 		OnChange = function(self)
 			if DspLst then
 				gl.DeleteList(DspLst)
@@ -94,7 +92,7 @@ options = {
 		end,
 	},
 	northSouthText = {
-		name = "North, East, South, & West text",
+		i18nKey = i18nPrefix .. 'option_northeastsouthwesttext',
 		type = 'bool',
 		value = false,
 		desc = 'Help you identify map direction under rotation by placing a "North/South/East/West" text on the map edges',

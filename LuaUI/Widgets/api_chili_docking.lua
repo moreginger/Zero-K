@@ -31,11 +31,12 @@ local lastHeight = 0
 ----------------------------------------------------
 -- Options
 ----------------------------------------------------
+i18nPrefix = 'chilidocking_'
 options_path = 'Settings/HUD Panels/Extras/Docking'
 options_order = { 'dockEnabled', 'dockEnabledPanels', 'minimizeEnabled', 'dockThreshold'}
 options = {
 	dockThreshold = {
-		name = "Docking distance",
+		i18nKey = i18nPrefix .. 'option_dockingdistance',
 		type = 'number',
 		advanced = true,
 		value = 5,
@@ -45,28 +46,25 @@ options = {
 		end },
 	},
 	dockEnabled = {
-		name = 'Enable docking',
+		i18nKey = i18nPrefix .. 'option_enabledocking',
 		advanced = false,
 		type = 'bool',
 		value = true,
 		noHotkey = true,
-		desc = 'Dock windows to screen edges',
 	},
 	dockEnabledPanels = {
-		name = 'Use docking between panels',
+		i18nKey = i18nPrefix .. 'option_usedockingbetweenpanels',
 		advanced = false,
 		type = 'bool',
 		value = true,
 		noHotkey = true,
-		desc = 'Dock windows each other to prevent overlaps. Requires docking to be enabled via the previous setting.',
 	},
 	minimizeEnabled = {
-		name = 'Minimizable windows',
+		i18nKey = i18nPrefix .. 'option_minimizablewindows',
 		advanced = false,
 		type = 'bool',
 		value = true,
 		noHotkey = true,
-		desc = 'When enabled certain windows will have minimization tabs.',
 	},
 }
 

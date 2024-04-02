@@ -55,18 +55,18 @@ local incolor2color
 
 local window_cpl, scroll_cpl
 
+i18nPrefix = 'chilideluxeplayerlistalpha202_'
 options_path = 'Settings/HUD Panels/Player List'
 options_order = { 'visible', 'backgroundOpacity', 'reset_wins', 'inc_wins_1', 'inc_wins_2','win_show_condition', 'text_height', 'name_width', 'stats_width', 'income_width', 'mousewheel', 'alignToTop', 'alignToLeft', 'showSummaries', 'show_stats', 'colorResourceStats', 'show_ccr', 'show_cpu_ping', 'cpu_ping_as_text', 'show_tooltips', 'list_size'}
 options = {
 	visible = {
-		name = "Visible",
+		i18nKey = i18nPrefix .. 'option_visible',
 		type = 'bool',
 		value = true,
-		desc = "Set a hotkey here to toggle the playerlist on and off",
 		OnChange = function() ToggleVisibility() end,
 	},
 	backgroundOpacity = {
-		name = "Background Opacity",
+		i18nKey = i18nPrefix .. 'option_backgroundopacity',
 		type = "number",
 		value = 0, min = 0, max = 1, step = 0.01,
 		OnChange = function(self)
@@ -76,15 +76,14 @@ options = {
 		end,
 	},
 	reset_wins = {
-		name = "Reset Wins",
-		desc = "Reset the win counts of all players",
+		i18nKey = i18nPrefix .. 'option_resetwins',
 		type = 'button',
 		OnChange = function()
 		if WG.WinCounter_Reset ~= nil then WG.WinCounter_Reset() end
 		end,
 	},
 	inc_wins_1 = {
-		name = "Increment Team 1 Wins",
+		i18nKey = i18nPrefix .. 'option_incrementteam1wins',
 		desc = "",
 		type = 'button',
 		OnChange = function()
@@ -96,7 +95,7 @@ options = {
 		advanced = true
 	},
 	inc_wins_2 = {
-		name = "Increment Team 2 Wins",
+		i18nKey = i18nPrefix .. 'option_incrementteam2wins',
 		desc = "",
 		type = 'button',
 		OnChange = function()
@@ -108,7 +107,7 @@ options = {
 		advanced = true
 	},
 	win_show_condition = {
-		name = 'Show Wins',
+		i18nKey = i18nPrefix .. 'option_showwins',
 		type = 'radioButton',
 		value = 'whenRelevant',
 		items = {
@@ -119,7 +118,7 @@ options = {
 		OnChange = function() SetupPanels() end,
 	},
 	text_height = {
-		name = 'Font Size (10-18)',
+		i18nKey = i18nPrefix .. 'option_fontsize1018',
 		type = 'number',
 		value = 13,
 		min=10,max=18,step=1,
@@ -127,7 +126,7 @@ options = {
 		advanced = true
 	},
 	name_width = {
-		name = 'Name Width (50-200)',
+		i18nKey = i18nPrefix .. 'option_namewidth50200',
 		type = 'number',
 		value = 120,
 		min=50,max=200,step=10,
@@ -135,7 +134,7 @@ options = {
 		advanced = true
 	},
 	stats_width = {
-		name = 'Metal worth stats width (2-5)',
+		i18nKey = i18nPrefix .. 'option_metalworthstatswidth25',
 		type = 'number',
 		value = 4,
 		min=2,max=5,step=1,
@@ -143,7 +142,7 @@ options = {
 		advanced = true
 	},
 	income_width = {
-		name = 'Income width (2-5)',
+		i18nKey = i18nPrefix .. 'option_incomewidth25',
 		type = 'number',
 		value = 3,
 		min=2,max=5,step=1,
@@ -151,7 +150,7 @@ options = {
 		advanced = true
 	},
 	mousewheel = {
-		name = "Scroll with mousewheel",
+		i18nKey = i18nPrefix .. 'option_scrollwithmousewheel',
 		type = 'bool',
 		value = false,
 		OnChange = function(self)
@@ -159,70 +158,64 @@ options = {
 			end,
 	},
 	alignToTop = {
-		name = "Align to top",
+		i18nKey = i18nPrefix .. 'option_aligntotop',
 		type = 'bool',
 		value = false,
-		desc = "Align to top and grow downwards (vs. align to bottom and grow upwards)",
 		OnChange = function() SetupPlayerNames() end,
 	},
 	alignToLeft = {
-		name = "Align to left",
+		i18nKey = i18nPrefix .. 'option_aligntoleft',
 		type = 'bool',
 		value = false,
-		desc = "Align to left and grow rightwards (vs. align to right and grow leftwards)",
 		OnChange = function() SetupScrollPanel() end,
 	},
 	showSummaries = {
-		name = "Show team summaries",
+		i18nKey = i18nPrefix .. 'option_showteamsummaries',
 		type = 'bool',
 		value = true,
 		desc = "Display summary information for each team (note: even with this checked, summaries won't be displayed if all the teams are very small)",
 		OnChange = function() SetupPlayerNames() end,
 	},
 	show_stats = {
-		name = "Show unit and income stats",
+		i18nKey = i18nPrefix .. 'option_showunitandincomestats',
 		type = 'bool',
 		value = true,
-		desc = "Display resource statistics: metal in mobile units and static defences; metal and energy income.",
 		OnChange = function() SetupPanels() end,
 	},
 	colorResourceStats = {
-		name = "Show stats in color",
+		i18nKey = i18nPrefix .. 'option_showstatsincolor',
 		type = 'bool',
 		value = false,
 		desc = "Display resource statistics such as unit metal and income in each player's color (vs. white)",
 		OnChange = function() SetupPlayerNames() end,
 	},
 	show_ccr = {
-		name = "Show clan/country/rank",
+		i18nKey = i18nPrefix .. 'option_showclancountryrank',
 		type = 'bool',
 		value = true,
-		desc = "Show the clan, country, and rank columns",
 		OnChange = function() SetupPanels() end,
 	},
 	show_cpu_ping = {
-		name = "Show ping and cpu",
+		i18nKey = i18nPrefix .. 'option_showpingandcpu',
 		type = 'bool',
 		value = true,
 		desc = "Show player's ping and cpu",
 		OnChange = function() SetupPanels() end,
 	},
 	cpu_ping_as_text = {
-		name = "Show ping/cpu as text",
+		i18nKey = i18nPrefix .. 'option_showpingcpuastext',
 		type = 'bool',
 		value = false,
-		desc = "Show ping and cpu stats as text (vs. as an icon)",
 		OnChange = function() SetupPanels() end,
 	},
 	show_tooltips = {
-		name = "Show tooltips",
+		i18nKey = i18nPrefix .. 'option_showtooltips',
 		type = 'bool',
 		value = true,
-		desc = "Show tooltips where available (vs. hiding all tooltips. Note: tooltip might block mouse click in some cases)",
 		OnChange = function() SetupPanels() end,
 	},
 	list_size = {
-		name = 'List Size: Who should be included?',
+		i18nKey = i18nPrefix .. 'option_listsizewhoshouldbeincluded',
 		type = 'list',
 		value = 3,
 		items = {

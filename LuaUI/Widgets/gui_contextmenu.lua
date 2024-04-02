@@ -169,35 +169,33 @@ end
 local function MakeStatsWindow()
 end
 
+i18nPrefix = 'contextmenu_'
 options_order = {'shortNotation', 'window_height', 'window_to_cursor', 'window_pos_x', 'window_pos_y', 'text_hotkey'}
 options_path = 'Help/Unit List'
 options = {
 	shortNotation = {
-		name = "Short Number Notation",
+		i18nKey = i18nPrefix .. 'option_shortnumbernotation',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
-		desc = 'Shows short number notation for HP and other values.',
 		path = 'Settings/HUD Panels/Unit Stats Help Window'
 	},
 	window_height = {
-		name = "Window Height",
+		i18nKey = i18nPrefix .. 'option_windowheight',
 		type = 'number',
 		value = 450,
 		min = 450,
 		max = 1000,
-		desc = 'Set default window height.',
 		path = 'Settings/HUD Panels/Unit Stats Help Window'
 	},
 	window_to_cursor = {
-		name = "Create window under cursor",
+		i18nKey = i18nPrefix .. 'option_createwindowundercursor',
 		type = 'bool',
 		value = true,
-		desc = 'Creates the window under the mouse cursor, otherwise uses the values below for position.',
 		path = 'Settings/HUD Panels/Unit Stats Help Window'
 	},
 	window_pos_x = {
-		name = "Window Default X",
+		i18nKey = i18nPrefix .. 'option_windowdefaultx',
 		type = 'number',
 		value = 150,
 		min = 0,
@@ -205,7 +203,7 @@ options = {
 		path = 'Settings/HUD Panels/Unit Stats Help Window'
 	},
 	window_pos_y = {
-		name = "Window Default Y",
+		i18nKey = i18nPrefix .. 'option_windowdefaulty',
 		type = 'number',
 		value = 150,
 		min = 0,
@@ -214,7 +212,7 @@ options = {
 	},
 	
 	text_hotkey = {
-		name = 'Global Construction Hotkeys',
+		i18nKey = i18nPrefix .. 'option_globalconstructionhotkeys',
 		type = 'text',
 		value = [[These hotkey are always active. To edit the in-tab hotkeys look in "Hotkeys/Command Panel". Each tab can even have their own layout.]],
 		path = 'Hotkeys/Construction',

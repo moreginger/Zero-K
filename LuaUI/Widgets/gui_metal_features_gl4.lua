@@ -42,12 +42,12 @@ local ALL_FEATURES = false
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+i18nPrefix = 'metalfeaturesgl4_'
 options_path = 'Settings/Interface/Reclaim Highlight'
 options_order = { 'showhighlight', 'pregamehighlight', 'minmetal', 'disableWithUi'}
 options = {
 	showhighlight = {
-		name = 'Show Reclaim',
-		desc = "When to highlight reclaimable features",
+		i18nKey = i18nPrefix .. 'option_showreclaim',
 		type = 'radioButton',
 		value = 'constructors',
 		items = {
@@ -61,15 +61,13 @@ options = {
 		noHotkey = true,
 	},
 	pregamehighlight = {
-		name = "Show Reclaim Before Round Start",
-		desc = "Enabled: Show reclaimable metal features before game begins \n Disabled: No highlights before game begins",
+		i18nKey = i18nPrefix .. 'option_showreclaimbeforeroundstart',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 	},
 	minmetal = {
-		name = 'Minimum Reclaim To Highlight',
-		desc = "Metal below this amount will not be highlighted",
+		i18nKey = i18nPrefix .. 'option_minimumreclaimtohighlight',
 		type = "number",
 		value = 1,
 		min = 1,
@@ -77,8 +75,7 @@ options = {
 		step = 1,
 	},
 	disableWithUi = {
-		name = 'Disable with hidden UI',
-		desc = 'Toggles outlines with Ctrl+F5.',
+		i18nKey = i18nPrefix .. 'option_disablewithhiddenui',
 		type = 'bool',
 		value = true,
 		noHotkey = true,

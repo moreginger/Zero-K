@@ -111,6 +111,7 @@ local function ToggleModuleTooltip(bool)
 	end
 end
 
+i18nPrefix = 'startupinfoandselector_'
 options_path = 'Settings/HUD Panels/Commander Selector'
 options = {
 	hideTrainers = {
@@ -145,14 +146,13 @@ options = {
 		end
 	},
 	cameraZoom = {
-		name = 'Zoom camera to start position',
+		i18nKey = i18nPrefix .. 'option_zoomcameratostartposition',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 	},
 	cameraZoomDistance = {
-		name = 'Start position zoom distance',
-		desc = "Distance that the start position zoom zooms the camera to.",
+		i18nKey = i18nPrefix .. 'option_startpositionzoomdistance',
 		type = 'number',
 		value = 1100,
 		min = 400, max = 3000, step = 50,

@@ -28,12 +28,12 @@ local function HotkeyChangeNotification()
 	buildingStartKey = ToKeysyms(key and key[1])
 end
 
+i18nPrefix = 'buildingstarter_'
 options_order = {'hotkey'}
 options_path = 'Hotkeys/Construction'
 options = {
 	hotkey = {
-		name = 'Place Nanoframes',
-		desc = 'Hold this key during structure placement to queue structures which are to placed but not constructed.',
+		i18nKey = i18nPrefix .. 'option_placenanoframes',
 		type = 'button',
 		hotkey = "Q",
 		bindWithAny = true,

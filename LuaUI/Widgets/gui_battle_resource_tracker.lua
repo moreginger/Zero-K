@@ -176,26 +176,24 @@ function GetColor(colormap, slider)
 end
 
 
+i18nPrefix = 'battleresourcetracker_'
 options_path = 'Settings/Interface/Battle Value Tracker'
 options_order = { 'showText', 'clearEvents', 'searchRadius', 'eventTimeout', 'fontSize', 'textAlpha' }
 options = {
 	showText = {
-		name = 'Show text',
-		desc = 'Whether to show text. Use this to toggle the text while keeping tracking active.',
+		i18nKey = i18nPrefix .. 'option_showtext',
 		type = 'bool',
 		value = true,
 	},
 	clearEvents = {
-		name = "Clear data",
-		desc = "Forget previous events. Hotkey this button.",
+		i18nKey = i18nPrefix .. 'option_cleardata',
 		type = 'button',
 		OnChange = function(self)
 			spatialHash = SpatialHash.new(config.spatialHashCellSize)
 		end,
 	},
 	searchRadius = {
-		name = 'Battle radius (elmos)',
-		desc = 'The size of an individual battle. Lower radius detects more distinct battles.',
+		i18nKey = i18nPrefix .. 'option_battleradiuselmos',
 		type = 'number',
 		value = 600,
 		min = 200,
@@ -203,8 +201,7 @@ options = {
 		step = 50,
 	},
 	eventTimeout = {
-		name = 'Battle time (seconds)',
-		desc = 'How long a battle persists until it fades. New kills refresh battle time.',
+		i18nKey = i18nPrefix .. 'option_battletimeseconds',
 		type = 'number',
 		value = 16,
 		min = 2,
@@ -212,7 +209,7 @@ options = {
 		step = 1,
 	},
 	fontSize = {
-		name = 'Font size',
+		i18nKey = i18nPrefix .. 'option_fontsize',
 		type = 'number',
 		value = 30,
 		min = 10,
@@ -220,7 +217,7 @@ options = {
 		step = 1,
 	},
 	textAlpha = {
-		name = 'Font opacity',
+		i18nKey = i18nPrefix .. 'option_fontopacity',
 		type = 'number',
 		value = 0.7,
 		min = 0.01,

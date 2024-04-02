@@ -14,13 +14,13 @@ local function ToggleTeamhighlight(self)
 	end
 end
 
+i18nPrefix = 'teamhighlightoption_'
 options_path = "Settings/Interface/Team Colors"
 options = {
 	enable_th = {
-		name = "Lagging players flash",
+		i18nKey = i18nPrefix .. 'option_laggingplayersflash',
 		type = "bool",
 		value = false,
-		desc = "When enabled, the units of lagging players will flash (with increasing intensity as their latency increases).",
 		noHotkey = true,
 		OnChange = ToggleTeamhighlight,
 	},

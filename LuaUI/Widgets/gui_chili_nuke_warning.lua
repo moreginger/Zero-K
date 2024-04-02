@@ -210,18 +210,19 @@ end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+i18nPrefix = 'chilinukewarning_'
 options_path = "Settings/Accessibility"
 options_order = { "mainlabel", "nukeWarningIsHuge", "nukeWarningOpacity" }
 
 options = {
 	mainlabel = {
-		name='Nuclear launch warning',
+		i18nKey = i18nPrefix .. 'option_nuclearlaunchwarning',
 		type='label',
 		simpleMode = true,
 		everyMode = true,
 	},
 	nukeWarningIsHuge = {
-		name = "Full-screen nuclear launch warning",
+		i18nKey = i18nPrefix .. 'option_fullscreennuclearlaunchwarning',
 		type = "bool",
 		value = false,
 		noHotkey = true,
@@ -240,7 +241,7 @@ options = {
 		everyMode = true,
 	},
 	nukeWarningOpacity = {
-		name = "Nuclear launch warning opacity",
+		i18nKey = i18nPrefix .. 'option_nuclearlaunchwarningopacity',
 		type = "number",
 		value = 100,
 		min = 1, max = 100, step = 1,

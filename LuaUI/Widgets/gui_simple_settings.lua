@@ -27,6 +27,7 @@ end
 ----------------------------------------------------
 -- Options
 ----------------------------------------------------
+i18nPrefix = 'simplesettings_'
 options_path = 'Settings'
 options_order = {}
 options = {}
@@ -36,8 +37,7 @@ local optionGenerationTable = {
 		optionWidget = "Selection Hierarchy",
 		optionPath = "Settings/Interface/Selection",
 		optionName = "useSelectionFilteringOption",
-		name  = "Enable selection filtering",
-		desc = "Filter constructors out of mixed unit selections.",
+		i18nKey = i18nPrefix .. 'option_enableselectionfiltering',
 		type = "bool",
 		default = true,
 		path = "Settings/Interface",
@@ -46,8 +46,7 @@ local optionGenerationTable = {
 		optionWidget = "Grab Input",
 		optionPath = "Settings/Interface/Mouse Cursor",
 		optionName = "grabinput",
-		name = "Grab Input (lock mouse to window)",
-		desc = "Prevents the cursor from leaving the Window/Screen.",
+		i18nKey = i18nPrefix .. 'option_grabinputlockmousetowindow',
 		type = "bool",
 		default = true,
 		path = "Settings/Interface",
@@ -56,8 +55,7 @@ local optionGenerationTable = {
 		optionWidget = "Showeco and Grid Drawer",
 		optionPath = "Settings/Interface/Economy Overlay",
 		optionName = "start_with_showeco",
-		name = "Start with economy overlay",
-		desc = "Enable the economy overlay when the game starts.",
+		i18nKey = i18nPrefix .. 'option_startwitheconomyoverlay',
 		type = "bool",
 		default = false,
 		path = "Settings/Interface",
@@ -66,8 +64,7 @@ local optionGenerationTable = {
 		optionWidget = "Showeco and Grid Drawer",
 		optionPath = "Settings/Interface/Economy Overlay",
 		optionName = "always_show_mexes",
-		name = "Always show Mexes",
-		desc = "Show metal extractors even when the full economy overlay is not enabled.",
+		i18nKey = i18nPrefix .. 'option_alwaysshowmexes',
 		type = "bool",
 		default = true,
 		path = "Settings/Interface",
@@ -77,8 +74,7 @@ local optionGenerationTable = {
 		optionFunction = function (self)
 			WG.SetWidgetOption("HUD Presets", "Settings/HUD Presets", "interfacePreset", (self.value and "minimapRight") or "minimapLeft")
 		end,
-		name = "Minimap on Right",
-		desc = "Toggle whether the minimap is on the left or right.",
+		i18nKey = i18nPrefix .. 'option_minimaponright',
 		type = "bool",
 		default = true,
 		path = "Settings/Interface",
@@ -87,7 +83,7 @@ local optionGenerationTable = {
 		optionWidget = "HUD Presets",
 		optionPath = "Settings/HUD Presets",
 		optionName = "minimapScreenSpace",
-		name = "Minimap Size",
+		i18nKey = i18nPrefix .. 'option_minimapsize',
 		type = "number",
 		min = 0.05,
 		max = 0.4,
@@ -97,7 +93,7 @@ local optionGenerationTable = {
 	},
 	{
 		optionName = "unitLabel",
-		name = "Unit Visibility",
+		i18nKey = i18nPrefix .. 'option_unitvisibility',
 		type = "label",
 		path = "Settings/Graphics",
 	},
@@ -115,8 +111,7 @@ local optionGenerationTable = {
 			Spring.SendCommands{"luaui disablewidget Outline No Shader"}
 			Spring.SendCommands{"luaui togglewidget Outline Shader GL4"}
 		end,
-		name = "Toggle Unit Outline",
-		desc = "Draws a black outline around units.",
+		i18nKey = i18nPrefix .. 'option_toggleunitoutline',
 		type = "button",
 		path = "Settings/Graphics",
 	},
@@ -124,7 +119,7 @@ local optionGenerationTable = {
 		optionWidget = "Settings/Graphics/Unit Visibility", -- Special hax for epicmenu options
 		optionPath = "Settings/Graphics/Unit Visibility",
 		optionName = "Icon Distance",
-		name = "Icon Distance",
+		i18nKey = i18nPrefix .. 'option_icondistance',
 		min = 1,
 		max = 500,
 		default = 151,
@@ -133,7 +128,7 @@ local optionGenerationTable = {
 	},
 	{
 		optionName = "moreOptions",
-		name = "More Options",
+		i18nKey = i18nPrefix .. 'option_moreoptions',
 		value = "More graphics settings are available in the main menu under Settings -> Graphics. These settings require a restart to take effect.",
 		type = "text",
 		path = "Settings/Graphics",
@@ -141,14 +136,14 @@ local optionGenerationTable = {
 	{
 		optionName = "moreOptionsButton",
 		optionFunction = function(self) Spring.SendLuaMenuMsg("openSettingsTab Graphics") end,
-		name = "Edit Main Graphics Settings",
+		i18nKey = i18nPrefix .. 'option_editmaingraphicssettings',
 		type = "button",
 		path = "Settings/Graphics",
 	},
 	{
 		optionName = "scrollSpeed",
 		chobbyName = "CameraPanSpeed",
-		name = "Scroll Speed",
+		i18nKey = i18nPrefix .. 'option_scrollspeed',
 		min = 1,
 		max = 200,
 		default = 50,
@@ -161,7 +156,7 @@ local optionGenerationTable = {
 	{
 		optionName = "zoomSpeed",
 		chobbyName = "MouseZoomSpeed",
-		name = "Zoom Speed",
+		i18nKey = i18nPrefix .. 'option_zoomspeed',
 		min = 1,
 		max = 100,
 		default = 25,
@@ -174,7 +169,7 @@ local optionGenerationTable = {
 	{
 		optionName = "invertZoom",
 		chobbyName = "InvertZoom",
-		name = "Invert Zoom",
+		i18nKey = i18nPrefix .. 'option_invertzoom',
 		default = false,
 		valueOverrideFunc = function ()
 			return (Spring.GetConfigInt("ScrollWheelSpeed", 1) or 1) > 0

@@ -32,16 +32,16 @@ local inHook = false
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+i18nPrefix = 'widgetprofiler_'
 options_path = 'Settings/Misc/Widget Profiler'
 options = {
 	hideLowValues = {
-                name = "Hide low values",
+                i18nKey = i18nPrefix .. 'option_hidelowvalues',
 		type = 'bool',
 		value = false,
-		desc = "Hide readings for widgets with <0.5% FPS cost",
 	},
 	fontSize = {
-		name = 'Font size',
+		i18nKey = i18nPrefix .. 'option_fontsize',
 		type = 'number',
 		min = 6, max = 24,
 		value = 8,

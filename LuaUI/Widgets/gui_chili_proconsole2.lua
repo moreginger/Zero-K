@@ -149,6 +149,7 @@ local lastMsgChat, lastMsgBackChat, lastMsgConsole
 ------------------------------------------------------------
 -- options
 
+i18nPrefix = 'chiliproconsole2_'
 options_path = "Settings/HUD Panels/Chat"
 
 local dedupe_path = options_path .. '/De-Duplication'
@@ -217,7 +218,7 @@ options = {
 	},
 	
 	enableConsole = {
-		name = "Enable the debug console",
+		i18nKey = i18nPrefix .. 'option_enablethedebugconsole',
 		type = 'bool',
 		value = false,
 		advanced = true,
@@ -233,14 +234,14 @@ options = {
 	},
 	
 	text_height_chat = {
-		name = 'Chat Text Size',
+		i18nKey = i18nPrefix .. 'option_chattextsize',
 		type = 'number',
 		value = 14,
 		min = 8, max = 30, step = 1,
 		OnChange = onOptionsChanged,
 	},
 	text_height_console = {
-		name = 'Log Text Size',
+		i18nKey = i18nPrefix .. 'option_logtextsize',
 		type = 'number',
 		value = 14,
 		min = 8, max = 30, step = 1,
@@ -248,14 +249,14 @@ options = {
 	},
 	
 	highlighted_text_height = {
-		name = 'Highlighted Text Size',
+		i18nKey = i18nPrefix .. 'option_highlightedtextsize',
 		type = 'number',
 		value = 16,
 		min = 8, max = 30, step = 1,
 		OnChange = onOptionsChanged,
 	},
 	clickable_points = {
-		name = "Clickable points and labels",
+		i18nKey = i18nPrefix .. 'option_clickablepointsandlabels',
 		type = 'bool',
 		value = true,
 		OnChange = onOptionsChanged,
@@ -264,7 +265,7 @@ options = {
 	
 	-- TODO work in progress
 	dedupe_messages = {
-		name = "Dedupe messages",
+		i18nKey = i18nPrefix .. 'option_dedupemessages',
 		type = 'bool',
 		value = true,
 		OnChange = onOptionsChanged,
@@ -273,7 +274,7 @@ options = {
 		path = dedupe_path,
 	},
 	dedupe_points = {
-		name = "Dedupe points and labels",
+		i18nKey = i18nPrefix .. 'option_dedupepointsandlabels',
 		type = 'bool',
 		value = true,
 		OnChange = onOptionsChanged,
@@ -282,7 +283,7 @@ options = {
 		path = dedupe_path,
 	},
 	highlight_all_private = {
-		name = "Highlight all private messages",
+		i18nKey = i18nPrefix .. 'option_highlightallprivatemessages',
 		type = 'bool',
 		value = true,
 		advanced = true,
@@ -290,7 +291,7 @@ options = {
 		path = hilite_path,
 	},
 	highlight_filter_allies = {
-		name = "Check allies messages for highlight",
+		i18nKey = i18nPrefix .. 'option_checkalliesmessagesforhighlight',
 		type = 'bool',
 		value = true,
 		advanced = true,
@@ -298,7 +299,7 @@ options = {
 		path = hilite_path,
 	},
 	highlight_filter_enemies = {
-		name = "Check enemy messages for highlight",
+		i18nKey = i18nPrefix .. 'option_checkenemymessagesforhighlight',
 		type = 'bool',
 		value = true,
 		advanced = true,
@@ -306,7 +307,7 @@ options = {
 		path = hilite_path,
 	},
 	highlight_filter_specs = {
-		name = "Check spec messages for highlight",
+		i18nKey = i18nPrefix .. 'option_checkspecmessagesforhighlight',
 		type = 'bool',
 		value = true,
 		advanced = true,
@@ -314,7 +315,7 @@ options = {
 		path = hilite_path,
 	},
 	highlight_filter_other = {
-		name = "Check other messages for highlight",
+		i18nKey = i18nPrefix .. 'option_checkothermessagesforhighlight',
 		type = 'bool',
 		value = false,
 		advanced = true,
@@ -323,7 +324,7 @@ options = {
 	},
 --[[
 	highlight_filter = {
-		name = 'Highlight filter',
+		i18nKey = i18nPrefix .. 'option_highlightfilter',
 		type = 'list',
 		OnChange = onOptionsChanged, -- NO NEED
 		value = 'allies',
@@ -338,7 +339,7 @@ options = {
 	
 	--[[
 	highlight_surround = {
-		name = "Surround highlighted messages",
+		i18nKey = i18nPrefix .. 'option_surroundhighlightedmessages',
 		type = 'bool',
 		value = true,
 		OnChange = onOptionsChanged,
@@ -347,7 +348,7 @@ options = {
 	},
 	--]]
 	highlight_sound = {
-		name = "Sound for highlighted messages",
+		i18nKey = i18nPrefix .. 'option_soundforhighlightedmessages',
 		type = 'bool',
 		value = false,
 		OnChange = onOptionsChanged,
@@ -356,7 +357,7 @@ options = {
 		path = hilite_path,
 	},
 	hideSpec = {
-		name = "Hide Spectator Chat",
+		i18nKey = i18nPrefix .. 'option_hidespectatorchat',
 		type = 'bool',
 		value = false,
 		OnChange = onOptionsChanged,
@@ -364,7 +365,7 @@ options = {
 		path = filter_path,
 	},
 	hideAlly = {
-		name = "Hide Ally Chat",
+		i18nKey = i18nPrefix .. 'option_hideallychat',
 		type = 'bool',
 		value = false,
 		OnChange = onOptionsChanged,
@@ -372,7 +373,7 @@ options = {
 		path = filter_path,
 	},
 	hidePoint = {
-		name = "Hide Points",
+		i18nKey = i18nPrefix .. 'option_hidepoints',
 		type = 'bool',
 		value = false,
 		OnChange = onOptionsChanged,
@@ -380,7 +381,7 @@ options = {
 		path = filter_path,
 	},
 	hideLabel = {
-		name = "Hide Labels",
+		i18nKey = i18nPrefix .. 'option_hidelabels',
 		type = 'bool',
 		value = false,
 		OnChange = onOptionsChanged,
@@ -388,7 +389,7 @@ options = {
 		path = filter_path,
 	},
 	hideLog = {
-		name = "Hide Engine Logging Messages",
+		i18nKey = i18nPrefix .. 'option_hideengineloggingmessages',
 		type = 'bool',
 		value = false,
 		OnChange = onOptionsChanged,
@@ -396,7 +397,7 @@ options = {
 		path = filter_path,
 	},
 	max_lines = {
-		name = 'Maximum Lines (20-100)',
+		i18nKey = i18nPrefix .. 'option_maximumlines20100',
 		type = 'number',
 		value = 60,
 		min = 20, max = 100, step = 1,
@@ -404,28 +405,28 @@ options = {
 	},
 	
 	color_chat = {
-		name = 'Everyone chat text',
+		i18nKey = i18nPrefix .. 'option_everyonechattext',
 		type = 'colors',
 		value = { 1, 1, 1, 1 },
 		OnChange = onOptionsChanged,
 		path = color_path,
 	},
 	color_ally = {
-		name = 'Ally text',
+		i18nKey = i18nPrefix .. 'option_allytext',
 		type = 'colors',
 		value = { 0.2, 1, 0.2, 1 },
 		OnChange = onOptionsChanged,
 		path = color_path,
 	},
 	color_other = {
-		name = 'Other text',
+		i18nKey = i18nPrefix .. 'option_othertext',
 		type = 'colors',
 		value = { 0.6, 0.6, 0.6, 1 },
 		OnChange = onOptionsChanged,
 		path = color_path,
 	},
 	color_spec = {
-		name = 'Spectator text',
+		i18nKey = i18nPrefix .. 'option_spectatortext',
 		type = 'colors',
 		value = { 0.8, 0.8, 0.8, 1 },
 		OnChange = onOptionsChanged,
@@ -433,7 +434,7 @@ options = {
 	},
 	--[[
 	color_dup = {
-		name = 'Duplicate message mark',
+		i18nKey = i18nPrefix .. 'option_duplicatemessagemark',
 		type = 'colors',
 		value = { 1, 0.2, 0.2, 1 },
 		OnChange = onOptionsChanged,
@@ -441,14 +442,14 @@ options = {
 	},
 	--]]
 	color_highlight = {
-		name = 'Highlight mark',
+		i18nKey = i18nPrefix .. 'option_highlightmark',
 		type = 'colors',
 		value = { 1, 1, 0.2, 1 },
 		OnChange = onOptionsChanged,
 		path = hilite_path,
 	},
 	color_chat_background = {
-		name = "Chat Background color",
+		i18nKey = i18nPrefix .. 'option_chatbackgroundcolor',
 		type = "colors",
 		value = { 0, 0, 0, 0},
 		OnChange = function(self)
@@ -459,7 +460,7 @@ options = {
 		path = color_path,
 	},
 	color_console_background = {
-		name = "Console Background color",
+		i18nKey = i18nPrefix .. 'option_consolebackgroundcolor',
 		type = "colors",
 		value = { 0, 0, 0, 0},
 		OnChange = function(self)
@@ -476,34 +477,30 @@ options = {
 	},
 	--[[
 	mousewheel = {
-		name = "Scroll with mousewheel",
+		i18nKey = i18nPrefix .. 'option_scrollwithmousewheel',
 		type = 'bool',
 		value = false,
 		OnChange = function(self) scrollpanel_console.ignoreMouseWheel = not self.value; end,
 	},
 	--]]
 	defaultAllyChat = {
-		name = "Default ally chat",
-		desc = "Sets default chat mode to allies at game start",
+		i18nKey = i18nPrefix .. 'option_defaultallychat',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 	},
 	defaultBacklogEnabled = {
-		name = "Enable backlog at start",
-		desc = "Starts with the backlog chat enabled.",
+		i18nKey = i18nPrefix .. 'option_enablebacklogatstart',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 	},
 	toggleBacklog = {
-		name = "Toggle backlog",
-		desc = "The toggle backlog button is here to let you hotkey this action.",
+		i18nKey = i18nPrefix .. 'option_togglebacklog',
 		type = 'button',
 	},
 	mousewheelBacklog = {
-		name = "Mousewheel Backlog",
-		desc = "Scroll the backlog chat with the mousewheel.",
+		i18nKey = i18nPrefix .. 'option_mousewheelbacklog',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
@@ -513,8 +510,7 @@ options = {
 		end,
 	},
 	enableSwap = {
-		name = "Backlog Arrow",
-		desc = "Enable the button to swap between chat and backlog chat.",
+		i18nKey = i18nPrefix .. 'option_backlogarrow',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
@@ -558,16 +554,14 @@ options = {
 		end,
 	},
 	changeFont = {
-		name = "Change message entering font.",
-		desc = "With this enabled the text-entering font will be changed to match the chat. May cause Spring to competely lock up intermittently on load. Requires reload to update.",
+		i18nKey = i18nPrefix .. 'option_changemessageenteringfont',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 		advanced = true,
 	},
 	enableChatBackground = {
-		name = "Enable chat background.",
-		desc = "Enables a background for the text-entering box.",
+		i18nKey = i18nPrefix .. 'option_enablechatbackground',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
@@ -582,7 +576,7 @@ options = {
 		end,
 	},
 	backchatOpacity = {
-		name = "Backlog Border Opacity",
+		i18nKey = i18nPrefix .. 'option_backlogborderopacity',
 		type = 'number',
 		value = 0.5,
 		min = 0, max = 1, step = 0.05,
@@ -592,7 +586,7 @@ options = {
 		end,
 	},
 	autohide_text_time = {
-		name = "Text decay time",
+		i18nKey = i18nPrefix .. 'option_textdecaytime',
 		type = 'number',
 		value = 20,
 		min = 10, max = 60, step = 5,

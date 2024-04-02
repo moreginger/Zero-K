@@ -21,18 +21,18 @@ local _, ToKeysyms = include("Configs/integral_menu_special_keys.lua")
 --------------------------------------------------------------------------------
 
 local hotkeysPath = "Hotkeys/Selection/Control Groups"
+i18nPrefix = 'defaultgrouprecallfix_'
 options_path = 'Settings/Camera/Control Group Zoom'
 options_order = { 'enabletimeout', 'timeoutlength', 'lbl_group', 'shift_adds'}
 options = {
 	enabletimeout = {
-		name = "Enable Timeout",
+		i18nKey = i18nPrefix .. 'option_enabletimeout',
 		type = 'bool',
 		value = true,
-		desc = "When enabled, the key must be pressed twice in quick sucession to zoom to a control group.",
 		noHotkey = true,
 	},
 	timeoutlength = {
-		name = "Double Press Speed",
+		i18nKey = i18nPrefix .. 'option_doublepressspeed',
 		type = "number",
 		value = 0.4,
 		min = 0,
@@ -41,14 +41,13 @@ options = {
 	},
 	lbl_group = {
 		type = 'label',
-		name = 'Control Groups',
+		i18nKey = i18nPrefix .. 'option_controlgroups',
 		path = hotkeysPath,
 	},
 	shift_adds = {
-		name = "Shift Adds To Group",
+		i18nKey = i18nPrefix .. 'option_shiftaddstogroup',
 		type = 'bool',
 		value = false,
-		desc = "When enabled, hold shift and press a group hotkey to add the selected units to the group.",
 		noHotkey = true,
 		path = hotkeysPath,
 	},

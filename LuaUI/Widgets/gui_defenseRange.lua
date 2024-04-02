@@ -203,6 +203,7 @@ local global_command_button
 
 -- EPIC options
 
+i18nPrefix = 'defenserangezerok_'
 options_path = 'Settings/Interface/Defence and Cloak Ranges'
 
 local function OnOptChange(self)
@@ -218,57 +219,57 @@ end
 options = {
 	label = { type = 'label', name = 'Defence Ranges' },
 	allyground = {
-		name = 'Show Ally Ground Defence',
+		i18nKey = i18nPrefix .. 'option_showallygrounddefence',
 		type = 'bool',
 		value = false,
 	},
 	allyair = {
-		name = 'Show Ally Air Defence',
+		i18nKey = i18nPrefix .. 'option_showallyairdefence',
 		type = 'bool',
 		value = false,
 	},
 	allynuke = {
-		name = 'Show Ally Nuke Defence',
+		i18nKey = i18nPrefix .. 'option_showallynukedefence',
 		type = 'bool',
 		value = true,
 	},
 	enemyground = {
-		name = 'Show Enemy Ground Defence',
+		i18nKey = i18nPrefix .. 'option_showenemygrounddefence',
 		type = 'bool',
 		value = true,
 	},
 	enemyair = {
-		name = 'Show Enemy Air Defence',
+		i18nKey = i18nPrefix .. 'option_showenemyairdefence',
 		type = 'bool',
 		value = true,
 	},
 	enemynuke = {
-		name = 'Show Enemy Nuke Defence',
+		i18nKey = i18nPrefix .. 'option_showenemynukedefence',
 		type = 'bool',
 		value = true,
 	},
 	enemyshield = {
-		name = 'Show Enemy Shields',
+		i18nKey = i18nPrefix .. 'option_showenemyshields',
 		type = 'bool',
 		value = true,
 	},
 	enemyradar = {
-		name = 'Show Enemy Radar Coverage',
+		i18nKey = i18nPrefix .. 'option_showenemyradarcoverage',
 		type = 'bool',
 		value = false,
 	},
 	specground = {
-		name = 'Show Ground Defence as Spectator',
+		i18nKey = i18nPrefix .. 'option_showgrounddefenceasspectator',
 		type = 'bool',
 		value = false,
 	},
 	specair = {
-		name = 'Show Air Defence as Spectator',
+		i18nKey = i18nPrefix .. 'option_showairdefenceasspectator',
 		type = 'bool',
 		value = false,
 	},
 	specnuke = {
-		name = 'Show Nuke Defence as Spectator',
+		i18nKey = i18nPrefix .. 'option_shownukedefenceasspectator',
 		type = 'bool',
 		value = true,
 	},

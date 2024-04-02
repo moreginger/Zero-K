@@ -54,44 +54,41 @@ local window_width  = 400
 local window_timeout = 10
 --]]
 --options_section = 'Interface'
+i18nPrefix = 'chilichatbubbles_'
 options_path = 'Settings/HUD Panels/Chat/Bubbles'
 options_order = {'setavatar','filterGlobalChat', 'filterAutohostMsg', 'text_height', 'window_margin', 'window_width', 'window_height', 'window_timeout', 'firstbubble_y',}
 options = {
 	setavatar = {
-		name = 'Set An Avatar',
-		desc = 'Avatar to show next to your bubble. Requires the Avatar widget',
+		i18nKey = i18nPrefix .. 'option_setanavatar',
 		type = 'button',
 		OnChange = function() Spring.SendCommands{"luaui enablewidget Avatars", "setavatar"} end,
 		path = 'Settings/HUD Panels/Chat',
 	},
 	filterGlobalChat = {
-		name = 'Filter Global Chat',
-		desc = 'Filter out messages made in global chat',
+		i18nKey = i18nPrefix .. 'option_filterglobalchat',
 		type = 'bool',
 		value = true,
 	},
 	filterAutohostMsg = {
-		name = 'Filter Autohost Messages',
-		desc = 'Filter out messages from autohost',
+		i18nKey = i18nPrefix .. 'option_filterautohostmessages',
 		type = 'bool',
 		value = true,
 	},
 	text_height = {
-		name = 'Font Size (10-18)',
+		i18nKey = i18nPrefix .. 'option_fontsize1018',
 		type = 'number',
 		value = 12,
 		min=10,max=18,step=1,
 	},
 	window_margin = {
-		name = 'Margin (0 - 10)',
-		desc = 'Margin between bubbles',
+		i18nKey = i18nPrefix .. 'option_margin010',
 		type = 'number',
 		min = 0,
 		max = 10,
 		value = 0,
 	},
 	window_width  = {
-		name = 'Width (200 - 600)',
+		i18nKey = i18nPrefix .. 'option_width200600',
 		desc = '',
 		type = 'number',
 		min = 200,
@@ -99,7 +96,7 @@ options = {
 		value = 260,
 	},
 	window_height  = {
-		name = 'Height 60-120',
+		i18nKey = i18nPrefix .. 'option_height60120',
 		desc = '',
 		type = 'number',
 		min = 40,
@@ -108,7 +105,7 @@ options = {
 	},
 	
 	window_timeout = {
-		name = 'Timeout (5 - 50)',
+		i18nKey = i18nPrefix .. 'option_timeout550',
 		desc = '',
 		type = 'number',
 		min = 5,
@@ -116,8 +113,7 @@ options = {
 		value = 20,
 	},
 	firstbubble_y = {
-		name = 'Screen Height of First Bubble',
-		desc = 'How high up the first bubble should start on the right of the screen.',
+		i18nKey = i18nPrefix .. 'option_screenheightoffirstbubble',
 		type = 'number',
 		min = 0,
 		max = 600,

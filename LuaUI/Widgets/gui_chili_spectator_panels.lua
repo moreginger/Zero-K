@@ -127,6 +127,7 @@ ShowOptions = {ShowOptions}
 --------------------------------------------------------------------------------
 -- Options
 
+i18nPrefix = 'chilispectatorpanels_'
 options_path = 'Settings/Spectating/Team Information Panels'
 
 options_order = {
@@ -152,7 +153,7 @@ options_order = {
 local econName, econPath = "Chili Economy Panel Default", "Settings/HUD Panels/Economy Panel"
 options = {
 	enableSpectator = {
-		name  = "Enable as Spectator",
+		i18nKey = i18nPrefix .. 'option_enableasspectator',
 		type  = "bool",
 		value = false,
 		OnChange = function(self)
@@ -162,7 +163,7 @@ options = {
 		desc = "Automatically enables the spectator panels and disables the player resource bar when spectating."
 	},
 	clanNameLengthCutoff = {
-		name  = "Max Clan Name Length",
+		i18nKey = i18nPrefix .. 'option_maxclannamelength',
 		type  = "number",
 		value = 12, min = 0, max = 60, step = 1,
 		desc = "Clans with full names shorter than this are displayed in full. Otherwise the short name is used. Requires reload."
@@ -170,13 +171,13 @@ options = {
 	
 	lable_playerPanel = {type = 'label', name = 'Player Panel',},
 	enablePlayerPanel = {
-		name  = "Enable Player Panel",
+		i18nKey = i18nPrefix .. 'option_enableplayerpanel',
 		type  = "bool",
 		value = true,
 		OnChange = function(self) option_CheckEnablePlayer(self) end,
 	},
 	playerOpacity = {
-		name  = "Opacity",
+		i18nKey = i18nPrefix .. 'option_opacity',
 		type  = "number",
 		value = 0.6, min = 0, max = 1, step = 0.01,
 		OnChange = function(self)
@@ -189,13 +190,13 @@ options = {
 			end,
 	},
 	playerMainFontSize = {
-		name  = "Main Font Size",
+		i18nKey = i18nPrefix .. 'option_mainfontsize',
 		type  = "number",
 		value = 25, min = 8, max = 60, step = 1,
 		OnChange = option_UpdateFonts,
 	},
 	playerFontSize = {
-		name  = "Font Size",
+		i18nKey = i18nPrefix .. 'option_fontsize',
 		type  = "number",
 		value = 16, min = 8, max = 40, step = 1,
 		OnChange = option_UpdateFonts,
@@ -203,21 +204,20 @@ options = {
 	
 	lable_economyPanels = {type = 'label', name = 'Economy Panels',},
 	enableEconomyPanels = {
-		name  = "Enable Economy Panels",
+		i18nKey = i18nPrefix .. 'option_enableeconomypanels',
 		type  = "bool",
 		value = true,
 		OnChange = function(self) option_CheckEnableResource(self) end,
 	},
 	flowAsArrows = {
-		name  = "Flow as arrows",
-		desc = "Use arrows instead of a number for the flow. Each arrow is 5 resources per second.",
+		i18nKey = i18nPrefix .. 'option_flowasarrows',
 		type  = "bool",
 		value = true,
 		noHotkey = true,
 		OnChange = option_UpdateFonts,
 	},
 	resourceOpacity = {
-		name  = "Opacity",
+		i18nKey = i18nPrefix .. 'option_opacity',
 		type  = "number",
 		value = 0.6, min = 0, max = 1, step = 0.01,
 		OnChange = function(self)
@@ -241,19 +241,19 @@ options = {
 			end,
 	},
 	resourceMainFontSize = {
-		name  = "Main Font Size",
+		i18nKey = i18nPrefix .. 'option_mainfontsize',
 		type  = "number",
 		value = 25, min = 8, max = 60, step = 1,
 		OnChange = option_UpdateFonts,
 	},
 	resourceFontSize = {
-		name  = "Font Size",
+		i18nKey = i18nPrefix .. 'option_fontsize',
 		type  = "number",
 		value = 16, min = 8, max = 40, step = 1,
 		OnChange = option_UpdateFonts,
 	},
 	colourBlind = {
-		name  = "Colourblind mode",
+		i18nKey = i18nPrefix .. 'option_colourblindmode',
 		type  = "bool",
 		value = false,
 		noHotkey = true,
@@ -261,7 +261,7 @@ options = {
 		desc = "Uses Blue and Yellow instead of Red and Green for number display"
 	},
 	fancySkinning = {
-		name = 'Fancy Skinning',
+		i18nKey = i18nPrefix .. 'option_fancyskinning',
 		type = 'radioButton',
 		value = 'panel',
 		items = {

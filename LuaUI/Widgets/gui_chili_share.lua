@@ -94,30 +94,28 @@ local function PingTimeOut(pingTime)
 end
 
 
+i18nPrefix = 'chilisharemenuv124_'
 options_path = 'Settings/HUD Panels/Player List'
 --[[ Change path if necessary. I just dumped it here because it made sense.
 Note: remerge is used in case of bugs! Feel free to remove it in a few stables.]]
 options = {
 	automation_clanmerge = {
-		name = 'Auto clan merge',
-		desc = 'Automatically merge with clan members.',
+		i18nKey = i18nPrefix .. 'option_autoclanmerge',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 	},
 	fixHotkeys = {
-		name  = "Fix hotkeys on start",
+		i18nKey = i18nPrefix .. 'option_fixhotkeysonstart',
 		type  = "bool",
 		value = true,
-		desc = "Fixes old hotkey issues once and then disables.",
 		advanced = true,
 		noHotkey = true,
 	},
 	enableNumWHR = {
-		name  = "Show player rating",
+		i18nKey = i18nPrefix .. 'option_showplayerrating',
 		type  = "bool",
 		value = false,
-		desc = "Shows the WHR current rating of each player after their name. Uses the rating category of the current game mode (Casual or MM).",
 		noHotkey = true,
 		OnChange = function(self)
 			if SetWantRebuild then
@@ -126,8 +124,7 @@ options = {
 		end,
 	},
 	sharemenu = {
-		name = 'Show Player List',
-		desc = 'Hold this button to bring up the Player List.',
+		i18nKey = i18nPrefix .. 'option_showplayerlist',
 		type = 'button',
 		hotkey = "tab",
 		OnChange = function(self)

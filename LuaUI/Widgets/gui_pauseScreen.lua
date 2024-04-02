@@ -83,34 +83,32 @@ local mouseY = 0
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+i18nPrefix = 'pausescreen_'
 options_path = 'Settings/HUD Panels/Pause Screen'
 
 options = {
 	hideimage = {
-		name='Disable Pause Screen',
+		i18nKey = i18nPrefix .. 'option_disablepausescreen',
 		type='bool',
 		desc = 'Remember to not display pause-screen anymore. \n\nRemainder: you can revisit this configuration page at any time later at "Settings/HUD Panels/Pause Screen" if needed.',
 		value=false,
 		noHotkey = true,
 	},
 	disablesound = {
-		name='Disable Voice',
+		i18nKey = i18nPrefix .. 'option_disablevoice',
 		type='bool',
-		desc = 'Remember to not play voice-over for pausing anymore.',
 		value=false,
 		noHotkey = true,
 	},
 	autofade = {
-		name='Pause Screen automatically fade out',
+		i18nKey = i18nPrefix .. 'option_pausescreenautomaticallyfadeout',
 		type='bool',
-		desc = 'Automatically fade to background without needing to click it.',
 		value=true,
 		noHotkey = true,
 	},
 	nopicture = {
-		name='Disable Logo',
+		i18nKey = i18nPrefix .. 'option_disablelogo',
 		type='bool',
-		desc = 'Only display pause text.',
 		value=true,
 		noHotkey = true,
 	},

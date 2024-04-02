@@ -39,6 +39,7 @@ reload luaui it will save to (or read from) the file camrec_AAAAAAAAAAAAAAAAAAAA
 --]]
 
 
+i18nPrefix = 'camerarecorder_'
 options_path = 'Settings/Camera/Recording'
 --options_order = { }
 
@@ -47,21 +48,19 @@ local OverviewAction = function() end
 options = {
 	
 	record = {
-		name = "Record",
-		desc = "Record now",
+		i18nKey = i18nPrefix .. 'option_record',
 		type = 'button',
         -- OnChange defined later
 	},
     
     play = {
-		name = "Play",
-		desc = "Play now",
+		i18nKey = i18nPrefix .. 'option_play',
 		type = 'button',
         -- OnChange defined later
 	},
     
     help = {
-        name = 'Help',
+        i18nKey = i18nPrefix .. 'option_help',
         type = 'text',
         value = [[
             * Start a game (such as a replay).

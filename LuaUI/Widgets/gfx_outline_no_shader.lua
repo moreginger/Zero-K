@@ -47,19 +47,18 @@ local function QualityChangeCheckFunc()
 	end
 end
 
+i18nPrefix = 'outlinenoshader_'
 options_path = 'Settings/Graphics/Unit Visibility/Outline (No Shader)'
 options = {
 	thickness = {
-		name = 'Outline Thickness',
-		desc = 'How thick the outline appears around objects',
+		i18nKey = i18nPrefix .. 'option_outlinethickness',
 		type = 'number',
 		min = 0.2, max = 1, step = 0.01,
 		value = 0.5,
 	OnChange = OnchangeFunc,
 	},
 	scaleWithHeight = {
-		name = 'Scale With Distance',
-		desc = 'Reduces the screen space width of outlines when zoomed out.',
+		i18nKey = i18nPrefix .. 'option_scalewithdistance',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
@@ -71,8 +70,7 @@ options = {
 		end,
 	},
 	scaleRange = {
-		name = 'Zoom Scale Minimum',
-		desc = 'Minimum outline thickness muliplier when zoomed out.',
+		i18nKey = i18nPrefix .. 'option_zoomscaleminimum',
 		type = 'number',
 		min = 0, max = 1, step = 0.01,
 		value = zoomScaleRange,
@@ -81,8 +79,7 @@ options = {
 		end,
 	},
 	functionScaleWithHeight = {
-		name = 'Subtle Scale With Distance',
-		desc = 'Reduces the screen space width of outlines when zoomed out, in a subtle way.',
+		i18nKey = i18nPrefix .. 'option_subtlescalewithdistance',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
@@ -94,8 +91,7 @@ options = {
 		end,
 	},
 	lowQualityOutlines = {
-		name = 'Low Quality Outlines',
-		desc = 'Reduces outline accuracy to improve perfomance, only recommended for low-end machines',
+		i18nKey = i18nPrefix .. 'option_lowqualityoutlines',
 		type = 'bool',
 		value = false,
 		advanced = true,

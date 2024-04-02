@@ -17,20 +17,19 @@ include("keysym.lua")
 -- Epic Menu Options
 --------------------------------------------------------------------------------
 
+i18nPrefix = 'guardremove_'
 options_path = 'Settings/Unit Behaviour'
 options = {
 	shiftRemovesGuard = {
-		name = "Additional queue removes guard",
+		i18nKey = i18nPrefix .. 'option_additionalqueueremovesguard',
 		type = "bool",
 		value = true,
-		desc = "Removes non-terminating commands (guard and patrol) from command queues when additional commands are queued.",
 		noHotkey = true,
 	},
 	repairGuards = {
-		name = "Repair in factory queues guard",
+		i18nKey = i18nPrefix .. 'option_repairinfactoryqueuesguard',
 		type = "bool",
 		value = true,
-		desc = "Prevents accidentally not assisting by right clicking on the unit in the factory instead of the factory.",
 		noHotkey = true,
 	},
 }

@@ -131,6 +131,7 @@ local buildTabHolder, buttonsHolder -- Required for padding update setting
 --------------------------------------------------------------------------------
 -- Widget Options
 
+i18nPrefix = 'chiliintegralmenu_'
 options_path = 'Settings/HUD Panels/Command Panel'
 options_order = {
 	'simple_mode', 'enable_return_fire', 'enable_roam',
@@ -160,8 +161,7 @@ WG.RemoveRoamState = true -- matches default
 
 options = {
 	simple_mode = {
-		name = "Large State Icons",
-		desc = "Large state icons are arranged in four rows and display their hotkey (if the hotkey is short). When disabled, the icons are arranged in five rows and do not display hotkeys. Individual states can be added or removed under Settings -> Interface -> Commands.",
+		i18nKey = i18nPrefix .. 'option_largestateicons',
 		type = 'bool',
 		value = true,
 		OnChange = function(self)
@@ -170,8 +170,7 @@ options = {
 		end,
 	},
 	enable_return_fire = {
-		name = "Enable return fire state",
-		desc = "When enabled, the Hold Fire state is extended to a three-option toggle with Return Fire as an additional option.",
+		i18nKey = i18nPrefix .. 'option_enablereturnfirestate',
 		type = 'bool',
 		value = false,
 		OnChange = function(self)
@@ -186,8 +185,7 @@ options = {
 		everyMode = true,
 	},
 	enable_roam = {
-		name = "Enable roam move state",
-		desc = "When enabled, the Hold Position state is extended to a three-option toggle with Roam as an additional option.",
+		i18nKey = i18nPrefix .. 'option_enableroammovestate',
 		type = 'bool',
 		value = false,
 		OnChange = function(self)
@@ -202,7 +200,7 @@ options = {
 		everyMode = true,
 	},
 	background_opacity = {
-		name = "Opacity",
+		i18nKey = i18nPrefix .. 'option_opacity',
 		type = "number",
 		value = 0.8, min = 0, max = 1, step = 0.01,
 		OnChange = function(self)
@@ -212,7 +210,7 @@ options = {
 	},
 	keyboardType2 = {
 		type='radioButton',
-		name='Grid Keyboard Layout',
+		i18nKey = i18nPrefix .. 'option_gridkeyboardlayout',
 		items = {
 			{name = 'QWERTY (standard)',key = 'qwerty', hotkey = nil},
 			{name = 'QWERTZ (central Europe)', key = 'qwertz', hotkey = nil},
@@ -226,121 +224,111 @@ options = {
 		path = commandPanelPath,
 	},
 	selectionClosesTab = {
-		name = 'Construction Closes Tab',
-		desc = "When enabled, issuing or cancelling a construction command will switch back to the Orders tab (except for build options in the factory queue tab).",
+		i18nKey = i18nPrefix .. 'option_constructionclosestab',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 	},
 	selectionClosesTabOnSelect = {
-		name = 'Selection Closes Tab',
-		desc = "When enabled, selecting a construction command will switch back to the Orders tab (except for build options in the factory queue tab).",
+		i18nKey = i18nPrefix .. 'option_selectionclosestab',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 	},
 	altInsertBehind = {
-		name = 'Alt Inserts Behind',
-		desc = "When enabled, the Alt modifier will insert construction behind the current item in the queue. When disabled, and if the factory is not set to repeat, Alt will insert the command in front of the current construction (destroying its progress).",
+		i18nKey = i18nPrefix .. 'option_altinsertsbehind',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 	},
 	unitsHotkeys2 = {
-		name = 'Factories use grid',
-		desc = "When enabled, factory unit production uses grid hotkeys.",
+		i18nKey = i18nPrefix .. 'option_factoriesusegrid',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 		path = commandPanelPath,
 	},
 	ctrlDisableGrid = {
-		name = 'Ctrl Disables Hotkeys',
-		desc = "When enabled, grid and tab hotkeys will deactivate while Ctrl is held. This allows for Ctrl+key hotkeys to be used while a construtor or factory is selected.",
+		i18nKey = i18nPrefix .. 'option_ctrldisableshotkeys',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
 	},
 	hide_when_spectating = {
-		name = 'Hide when Spectating',
+		i18nKey = i18nPrefix .. 'option_hidewhenspectating',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
 	},
 	applyCustomGrid = {
-		name = "Apply Changes",
+		i18nKey = i18nPrefix .. 'option_applychanges',
 		type = 'button',
 		path = customGridPath,
 	},
 	label_apply = {
 		type = 'text',
-		name = 'Note: Click above to refresh',
+		i18nKey = i18nPrefix .. 'option_noteclickabovetorefresh',
 		value = 'Update modified custom grid hotkeys by clicking the button above. Reselecting any selected units may also be required. Note that "Apply Changes" can be bound to a key for convinence.',
 		path = customGridPath
 	},
 	label_tab = {
 		type = 'label',
-		name = 'Tab Hotkeys',
+		i18nKey = i18nPrefix .. 'option_tabhotkeys',
 		path = commandPanelPath
 	},
 	tab_economy = {
-		name = "Economy Tab",
-		desc = "Switches to economy tab.",
+		i18nKey = i18nPrefix .. 'option_economytab',
 		type = 'button',
 		path = commandPanelPath,
 	},
 	tab_defence = {
-		name = "Defence Tab",
-		desc = "Switches to defence tab.",
+		i18nKey = i18nPrefix .. 'option_defencetab',
 		type = 'button',
 		path = commandPanelPath,
 	},
 	tab_special = {
-		name = "Special Tab",
-		desc = "Switches to special tab.",
+		i18nKey = i18nPrefix .. 'option_specialtab',
 		type = 'button',
 		path = commandPanelPath,
 	},
 	tab_factory = {
-		name = "Factory Tab",
-		desc = "Switches to factory tab.",
+		i18nKey = i18nPrefix .. 'option_factorytab',
 		type = 'button',
 		path = commandPanelPath,
 	},
 	tab_units = {
-		name = "Units Tab",
-		desc = "Switches to units tab.",
+		i18nKey = i18nPrefix .. 'option_unitstab',
 		type = 'button',
 		path = commandPanelPath,
 	},
 	leftPadding = {
-		name = 'Left Padding',
+		i18nKey = i18nPrefix .. 'option_leftpadding',
 		type = 'number',
 		value = 0,
 		advanced = true,
 		min = 0, max = 500, step=1,
 	},
 	tabFontSize = {
-		name = "Tab Font Size",
+		i18nKey = i18nPrefix .. 'option_tabfontsize',
 		type = "number",
 		value = 14, min = 8, max = 30, step = 1,
 	},
 	rightPadding = {
-		name = 'Right Padding',
+		i18nKey = i18nPrefix .. 'option_rightpadding',
 		type = 'number',
 		value = 0,
 		advanced = true,
 		min = 0, max = 500, step=1,
 	},
 	flushLeft = {
-		name = 'Flush Left',
+		i18nKey = i18nPrefix .. 'option_flushleft',
 		type = 'bool',
 		value = false,
 		hidden = true,
 		noHotkey = true,
 	},
 	fancySkinning = {
-		name = 'Fancy Skinning',
+		i18nKey = i18nPrefix .. 'option_fancyskinning',
 		type = 'bool',
 		value = false,
 		hidden = true,
@@ -348,12 +336,12 @@ options = {
 	},
 	label_super_grid_config = {
 		type = 'label',
-		name = 'Tab specific overrides',
+		i18nKey = i18nPrefix .. 'option_tabspecificoverrides',
 		path = customGridPath
 	},
 	
 	helpwindow = {
-		name = 'Command Visibility',
+		i18nKey = i18nPrefix .. 'option_commandvisibility',
 		type = 'text',
 		value = "Each command can be hidden from the command panel, with some advanced ones hidden by default. Hotkeys can be used to issue commands or toggle states even when hidden.",
 		path = commandOptPath,
@@ -362,8 +350,7 @@ options = {
 	},
 	commands_reset_default = {
 		type = 'button',
-		name = "Reset to default",
-		desc = "Show the basic commands and hide the advanced ones",
+		i18nKey = i18nPrefix .. 'option_resettodefault',
 		OnChange = function ()
 			for i = 1, #cullingSettingsList do
 				local data = cullingSettingsList[i]
@@ -380,7 +367,7 @@ options = {
 	},
 	commands_enable_all = {
 		type = 'button',
-		name = "Show all commands",
+		i18nKey = i18nPrefix .. 'option_showallcommands',
 		OnChange = function ()
 			for i = 1, #cullingSettingsList do
 				local data = cullingSettingsList[i]
@@ -397,7 +384,7 @@ options = {
 	},
 	commands_disable_all = {
 		type = 'button',
-		name = "Hide all commands",
+		i18nKey = i18nPrefix .. 'option_hideallcommands',
 		OnChange = function ()
 			for i = 1, #cullingSettingsList do
 				local data = cullingSettingsList[i]
@@ -414,7 +401,7 @@ options = {
 	},
 	states_enable_all = {
 		type = 'button',
-		name = "Show all states",
+		i18nKey = i18nPrefix .. 'option_showallstates',
 		OnChange = function ()
 			for i = 1, #cullingSettingsList do
 				local data = cullingSettingsList[i]
@@ -431,7 +418,7 @@ options = {
 	},
 	states_disable_all = {
 		type = 'button',
-		name = "Hide all states",
+		i18nKey = i18nPrefix .. 'option_hideallstates',
 		OnChange = function ()
 			for i = 1, #cullingSettingsList do
 				local data = cullingSettingsList[i]

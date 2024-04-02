@@ -29,28 +29,26 @@ local spGetUnitHealth = Spring.GetUnitHealth
 ------------------------
 --  CONFIG
 ------------------------
+i18nPrefix = 'clippycomments_'
 options_path = 'Settings/Tips/Clippy Comments'
 options = {
 	rankLimit = {
-		name = "Rank Limit",
+		i18nKey = i18nPrefix .. 'option_ranklimit',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
-		desc = 'Units make comments only to newbies.',
 	},
 	warnExpensiveUnits = {
-		name = "Warning for Expensive Units",
+		i18nKey = i18nPrefix .. 'option_warningforexpensiveunits',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
-		desc = 'Units complain about expensive units made early game.',
 	},
 	cartoonBubbles = {
-		name = "Cartoon Bubbles",
+		i18nKey = i18nPrefix .. 'option_cartoonbubbles',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
-		desc = 'Use cartoon bubbles + font instead of a standard panel.',
 	}
 }
 

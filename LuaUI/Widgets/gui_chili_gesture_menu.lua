@@ -80,17 +80,18 @@ local function OptionsChanged()
 	end
 end
 
+i18nPrefix = 'chiligesturemenu_'
 options_path = 'Settings/Interface/Gesture Menu'
 options_order = { 'markingmenu', 'iconDistance', 'iconSize', 'selectedIconSize', 'mouseMoveThreshold', 'mouseIdleThreshold', 'keyboardOnly', 'onlyOpenWithKeyboard', "qwertz", 'alternateconfig', 'allowMultiple'}
 options = {
 	markingmenu = {
-		name = "Open Menu (set a hotkey ->)",
+		i18nKey = i18nPrefix .. 'option_openmenusetahotkey',
 		type = 'button',
 		--OnChange defined later
 	},
 
 	iconDistance = {
-		name = "Icon distance (20-360)",
+		i18nKey = i18nPrefix .. 'option_icondistance20360',
 		type = 'number',
 		value = 50,
 		min=20,max=360,step=10,
@@ -98,7 +99,7 @@ options = {
 	},
 
 	iconSize = {
-		name = "Icon size (10-100)",
+		i18nKey = i18nPrefix .. 'option_iconsize10100',
 		type = 'number',
 		value = 20,
 		min=10,max=100,step=1,
@@ -106,7 +107,7 @@ options = {
 	},
 
 	selectedIconSize = {
-		name = "Selected icon size (10-100)",
+		i18nKey = i18nPrefix .. 'option_selectediconsize10100',
 		type = 'number',
 		value = 32,
 		min=10,max=100,step=1,
@@ -114,60 +115,53 @@ options = {
 	},
 
 	mouseMoveThreshold = {
-		name = "Mouse move threshold (10-2000)",
+		i18nKey = i18nPrefix .. 'option_mousemovethreshold102000',
 		type = 'number',
 		value = 900,
 		min=10,max=1000,step=1,
-		desc = "When you hold right button, you must move this distance(squared) to show menu",
 		OnChange = OptionsChanged,
 	},
 
 	mouseIdleThreshold = {
-		name = "Mouse idle threshold (0.1-3s)",
+		i18nKey = i18nPrefix .. 'option_mouseidlethreshold013s',
 		type = 'number',
 		value = 1,
 		min=0.1,max=3,step=0.1,
-		desc = "When you hold right button still, menu appears after this time(s)",
 		OnChange = OptionsChanged,
 	},
 
 	keyboardOnly = {
-		name = 'Keyboard only',
+		i18nKey = i18nPrefix .. 'option_keyboardonly',
 		type = 'bool',
 		value = false,
-		desc = 'Disables gesture recognition',
 		OnChange = OptionsChanged,
 	},
 
 	onlyOpenWithKeyboard = {
-		name = 'Only open with keyboard',
+		i18nKey = i18nPrefix .. 'option_onlyopenwithkeyboard',
 		type = 'bool',
 		value = false,
-		desc = 'Disables right click drag to open',
 		OnChange = OptionsChanged,
 	},
 
 	qwertz = {
-		name = "qwertz keyboard",
+		i18nKey = i18nPrefix .. 'option_qwertzkeyboard',
 		type = "bool",
 		value = false,
-		desc = "keys for qwertz keyboard",
 		OnChange = OptionsChanged,
 	},
 
 	alternateconfig = {
-		name = "Alternate Keyboard Layout",
+		i18nKey = i18nPrefix .. 'option_alternatekeyboardlayout',
 		type = "bool",
 		value = false,
-		desc = "Centre hotkeys around D instead of S.",
 		OnChange = OptionsChanged,
 	},
 
 	allowMultiple = {
-		name = "Allow for multiple selected units",
+		i18nKey = i18nPrefix .. 'option_allowformultipleselectedunits',
 		type = "bool",
 		value = true,
-		desc = "Allows gestures even for multiple units selected",
 		OnChange = OptionsChanged,
 	},
 

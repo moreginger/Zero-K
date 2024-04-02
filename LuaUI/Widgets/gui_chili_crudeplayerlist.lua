@@ -626,11 +626,12 @@ end
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
 
+i18nPrefix = 'chilicrudeplayerlist_'
 options_path = 'Settings/HUD Panels/Player List'
 options_order = {'text_height', 'backgroundOpacity', 'alignToTop'}
 options = {
 	text_height = {
-		name = 'Font Size (10-18)',
+		i18nKey = i18nPrefix .. 'option_fontsize1018',
 		type = 'number',
 		value = 13,
 		min = 10, max = 18, step = 1,
@@ -638,7 +639,7 @@ options = {
 		advanced = true
 	},
 	backgroundOpacity = {
-		name = "Background opacity",
+		i18nKey = i18nPrefix .. 'option_backgroundopacity',
 		type = "number",
 		value = 0, min = 0, max = 1, step = 0.01,
 		OnChange = function(self)
@@ -648,7 +649,7 @@ options = {
 		end,
 	},
 	alignToTop = {
-		name = "Align to top",
+		i18nKey = i18nPrefix .. 'option_aligntotop',
 		type = 'bool',
 		value = false,
 		desc = "Align list entries to top (i.e. don't push to bottom)",

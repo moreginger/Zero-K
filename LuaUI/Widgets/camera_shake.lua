@@ -34,11 +34,12 @@ local spSetShockFrontFactors = Spring.SetShockFrontFactors
 
 --------------------------------------------------------------------------------
 ----------------------------Configuration---------------------------------------
+i18nPrefix = 'camerashake_'
 options_path = 'Settings/Camera'
 options_order = { 'camShake', 'camShakeMax'}
 options = {
 	camShake = {
-		name = 'Camera Shake (when explosions occur)',
+		i18nKey = i18nPrefix .. 'option_camerashakewhenexplosionsoccur',
 		type = "number",
 		value = 0.5,
 		min = 0,
@@ -48,7 +49,7 @@ options = {
 		everyMode = true,
 	},
 	camShakeMax = {
-		name = 'Camera Shake Limit',
+		i18nKey = i18nPrefix .. 'option_camerashakelimit',
 		type = "number",
 		value = 0.3,
 		min = 0,

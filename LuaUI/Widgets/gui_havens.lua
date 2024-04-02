@@ -19,6 +19,7 @@ VFS.Include("LuaRules/Configs/customcmds.h.lua")
 -------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------
 
+i18nPrefix = 'havenhandler_'
 options_path = 'Settings/Interface/Retreat Zones'
 options_order = {'onlyShowMyZones', 'cancelRetreat'}
 
@@ -26,8 +27,7 @@ local RETREAT_OFF_TABLE = {0}
 
 options = {
 	onlyShowMyZones = {
-		name = 'Only Show My Zones',
-		desc = 'With this enabled you will only see your retreat zones.',
+		i18nKey = i18nPrefix .. 'option_onlyshowmyzones',
 		type = 'bool',
 		value = true,
 		OnChange = function(self)
@@ -35,8 +35,7 @@ options = {
 		end,
 	},
 	cancelRetreat = {
-		name = 'Cancel Retreat',
-		desc = 'Set your selected units to not retreat. It might be useful to assign it a hotkey.',
+		i18nKey = i18nPrefix .. 'option_cancelretreat',
 		type = 'button',
 		action  = 'cancelretreat',
 		hidden = true,

@@ -15,15 +15,15 @@ end
 --------------------------------------------------------------------------------
 -- Config
 
+i18nPrefix = 'missilesilorange_'
 options_path = 'Settings/Interface/Building Placement'
 options_order = { 'missile_silo_advanced'}
 options = {
 	missile_silo_advanced = {
-		name = "Advanced Missile Silo ranges",
+		i18nKey = i18nPrefix .. 'option_advancedmissilesiloranges',
 		type = 'bool',
 		value = false,
 		noHotkey = true,
-		desc = 'When placing a Missile Silo, show at what range the missiles will fall vertically, ie. are unblockable by terrain geometry and walls. Also, show how far away from the nominal range you can reach through AoE.',
 	},
 }
 

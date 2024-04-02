@@ -54,18 +54,19 @@ end
 -- Epic Menu
 ---------------------------------
 local hotkeyPath = "Hotkeys/Construction"
+i18nPrefix = 'persistentbuildheight_'
 options_path = 'Settings/Interface/Building Placement'
 options_order = { 'enterSetHeightWithB', 'altMouseToSetHeight', 'label_structure', 'hotkey_toggle', 'hotkey_raise', 'hotkey_lower'}
 options = {
 	enterSetHeightWithB = {
-		name = "Toggle set height",
+		i18nKey = i18nPrefix .. 'option_togglesetheight',
 		type = "bool",
 		value = true,
 		noHotkey = true,
 		desc = "Press a hotkey (default B) while placing a structure to set the height of the structure. Keys C and V increase or decrease height."
 	},
 	altMouseToSetHeight = {
-		name = "Alt mouse wheel to set height",
+		i18nKey = i18nPrefix .. 'option_altmousewheeltosetheight',
 		type = "bool",
 		value = true,
 		noHotkey = true,
@@ -73,12 +74,11 @@ options = {
 	},
 	label_structure = {
 		type = 'label',
-		name = 'Terraform Structure Placement',
+		i18nKey = i18nPrefix .. 'option_terraformstructureplacement',
 		path = hotkeyPath
 	},
 	hotkey_toggle = {
-		name = 'Toggle Structure Terraform',
-		desc = 'Press during structure placement to make a strucutre on a spire or a hold. Alt + MMB also toggles this mode.',
+		i18nKey = i18nPrefix .. 'option_togglestructureterraform',
 		type = 'button',
 		hotkey = "B",
 		bindWithAny = true,
@@ -87,8 +87,7 @@ options = {
 		path = hotkeyPath,
 	},
 	hotkey_raise = {
-		name = 'Raise Structure Terraform',
-		desc = 'Increase the height of structure terraform. Also possible with Alt + Scrollwheel.',
+		i18nKey = i18nPrefix .. 'option_raisestructureterraform',
 		type = 'button',
 		hotkey = "C",
 		bindWithAny = true,
@@ -97,8 +96,7 @@ options = {
 		path = hotkeyPath,
 	},
 	hotkey_lower = {
-		name = 'Lower Structure Terraform',
-		desc = 'Decrease the height of structure terraform. Also possible with Alt + Scrollwheel.',
+		i18nKey = i18nPrefix .. 'option_lowerstructureterraform',
 		type = 'button',
 		hotkey = "V",
 		bindWithAny = true,

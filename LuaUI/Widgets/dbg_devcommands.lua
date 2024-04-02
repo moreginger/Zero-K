@@ -344,73 +344,74 @@ end
 
 --------------------------------------------------------------------------------
 --------------------------------------------------------------------------------
+i18nPrefix = 'devcommands_'
 options_path = 'Settings/Toolbox/Dev Commands'
 options = {
 	cheat = {
-		name = "Cheat",
+		i18nKey = i18nPrefix .. 'option_cheat',
 		type = 'button',
 		action = 'cheat',
 	},
 	nocost = {
-		name = "No Cost",
+		i18nKey = i18nPrefix .. 'option_nocost',
 		type = 'button',
 		action = 'nocost',
 	},
 	
 	spectator = {
-		name = "Spectator",
+		i18nKey = i18nPrefix .. 'option_spectator',
 		type = 'button',
 		action = 'spectator',
 	},
 	
 	godmode = {
-		name = "Godmode",
+		i18nKey = i18nPrefix .. 'option_godmode',
 		type = 'button',
 		action = 'godmode',
 	},
 	
 	testunit = {
-		name = "Spawn Testunit",
+		i18nKey = i18nPrefix .. 'option_spawntestunit',
 		type = 'button',
 		action = 'give testunit',
 	},
 	
 	luauireload = {
-		name = "Reload LuaUI",
+		i18nKey = i18nPrefix .. 'option_reloadluaui',
 		type = 'button',
 		action = 'luaui reload',
 	},
 	
 	luarulesreload = {
-		name = "Reload LuaRules",
+		i18nKey = i18nPrefix .. 'option_reloadluarules',
 		type = 'button',
 		action = 'luarules reload',
 	},
 	
 	debug = {
-		name = "Debug",
+		i18nKey = i18nPrefix .. 'option_debug',
 		type = 'button',
 		action = 'debug',
 	},
 	debugcolvol = {
-		name = "Debug Colvol",
+		i18nKey = i18nPrefix .. 'option_debugcolvol',
 		type = 'button',
 		action = 'debugcolvol',
 	},
 	debugpath = {
-		name = "Debug Path",
+		i18nKey = i18nPrefix .. 'option_debugpath',
 		type = 'button',
 		action = 'debugpath',
 	},
 	singlestep = {
-		name = "Single Step",
+		i18nKey = i18nPrefix .. 'option_singlestep',
 		type = 'button',
 		action = 'singlestep',
 	},
 	
 	
 	printunits = {
-		name = "Print Units",
+		i18nKey = i18nPrefix .. 'option_printunits',
 		type = 'button',
 		OnChange = function(self)
 			for i=1,#UnitDefs do
@@ -421,7 +422,7 @@ options = {
 		end,
 	},
 	printunitnames = {
-		name = "Print Unit Names",
+		i18nKey = i18nPrefix .. 'option_printunitnames',
 		type = 'button',
 		OnChange = function(self)
 			for i=1,#UnitDefs do
@@ -432,7 +433,7 @@ options = {
 		end,
 	},
 	echoCommand = {
-		name = 'Echo Given Commands',
+		i18nKey = i18nPrefix .. 'option_echogivencommands',
 		type = 'bool',
 		value = false,
 		OnChange = function(self)
@@ -440,69 +441,66 @@ options = {
 		end,
 	},
 	missionexport = {
-		name = "Mission Units Export",
+		i18nKey = i18nPrefix .. 'option_missionunitsexport',
 		type = 'button',
 		action = 'mission_units_export',
 		OnChange = ExportUnitsForMission,
 	},
 	missionexportcommands = {
-		name = "Mission Unit Export (Commands)",
+		i18nKey = i18nPrefix .. 'option_missionunitexportcommands',
 		type = 'button',
 		action = 'mission_unit_commands_export',
 		OnChange = ExportUnitsAndCommandsForMission,
 	},
 	missionexportselectedcommands = {
-		name = "Mission Unit Export (Selected and Commands)",
+		i18nKey = i18nPrefix .. 'option_missionunitexportselectedandcommands',
 		type = 'button',
 		action = 'mission_unit_commands_export',
 		OnChange = ExportSelectedUnitsAndCommandsForMission,
 	},
 	exportallyteamcommands = {
-		name = "AllyTeam Unit Export (Selected and Commands)",
+		i18nKey = i18nPrefix .. 'option_allyteamunitexportselectedandcommands',
 		type = 'button',
 		action = 'allyteam_unit_commands_export',
 		OnChange = ExportAllyTeamUnitsAndCommands,
 	},
 	missionexportfeatures = {
-		name = "Mission Feature Export",
+		i18nKey = i18nPrefix .. 'option_missionfeatureexport',
 		type = 'button',
 		action = 'mission_features_export',
 		OnChange = ExportFeaturesForMission,
 	},
 	moveUnit = {
-		name = "Move Unit",
-		desc = "Move selected unit to the mouse cursor.",
+		i18nKey = i18nPrefix .. 'option_moveunit',
 		type = 'button',
 		action = 'debug_move_unit',
 		OnChange = MoveUnit,
 	},
 	moveUnitSnap = {
-		name = "Move Unit Snap",
-		desc = "Move selected unit to the mouse cursor. Snaps to grid.",
+		i18nKey = i18nPrefix .. 'option_moveunitsnap',
 		type = 'button',
 		action = 'debug_move_unit_snap',
 		OnChange = MoveUnitSnap,
 	},
 	moveUnitDelay = {
-		name = "Move Unit Repeat Time",
+		i18nKey = i18nPrefix .. 'option_moveunitrepeattime',
 		type = "number",
 		value = 0.1, min = 0.01, max = 0.4, step = 0.01,
 	},
 	destroyUnit = {
-		name = "Destroy Units",
-		desc = "Destroy selected units (gentle).",
+		i18nKey = i18nPrefix .. 'option_destroyunits',
 		type = 'button',
 		action = 'debug_destroy_unit',
 		OnChange = DestroyUnit,
 	},
 	RotateUnitLeft = {
-		name = "Rotate Unit Anticlockwise",
+		i18nKey = i18nPrefix .. 'option_rotateunitanticlockwise',
 		type = 'button',
 		action = 'debug_rotate_unit_anticlockwise',
 		OnChange = RotateUnitLeft,
 	},
 	RotateUnitRight = {
-		name = "Rotate Unit Clockwise",
+		i18nKey = i18nPrefix .. 'option_rotateunitclockwise',
 		type = 'button',
 		action = 'debug_rotate_unit_clockwise',
 		OnChange = RotateUnitRight,

@@ -273,6 +273,7 @@ local ctrlFilterUnits = false
 --------------------------------------------------------------------------------
 -- Settings
 
+i18nPrefix = 'chiliselectionscursortip_'
 options_path = 'Settings/HUD Panels/Tooltip'
 local selPath = 'Settings/HUD Panels/Selected Units Panel'
 
@@ -293,57 +294,51 @@ local showJumpReload = true
 
 options = {
 	tooltip_delay = {
-		name = 'Tooltip display delay (0 - 4s)',
-		desc = 'Determines how long you can leave the mouse idle until the tooltip is displayed.',
+		i18nKey = i18nPrefix .. 'option_tooltipdisplaydelay04s',
 		type = 'number',
 		min=0,max=4,step=0.05,
 		value = 0,
 	},
 	independant_world_tooltip_delay = { -- Done
-		name = 'Unit and Feature tooltip delay (0 - 4s)',
+		i18nKey = i18nPrefix .. 'option_unitandfeaturetooltipdelay04s',
 		--desc = 'Determines how long you can leave the mouse over a unit or feature until the tooltip is displayed.',
 		type = 'number',
 		min=0,max=4,step=0.05,
 		value = 0.2,
 	},
 	show_for_units = {
-		name = "Show Tooltip for Units",
+		i18nKey = i18nPrefix .. 'option_showtooltipforunits',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
-		desc = 'Show the tooltip for units.',
 	},
 	show_for_wreckage = {
-		name = "Show Tooltip for Wreckage",
+		i18nKey = i18nPrefix .. 'option_showtooltipforwreckage',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
-		desc = 'Show the tooltip for wreckage and map features.',
 	},
 	show_for_unreclaimable = {
-		name = "Show Tooltip for Unreclaimables",
+		i18nKey = i18nPrefix .. 'option_showtooltipforunreclaimables',
 		type = 'bool',
 		advanced = true,
 		value = false,
 		noHotkey = true,
-		desc = 'Show the tooltip for unreclaimable features.',
 	},
 	showdrawtooltip = {
-		name = "Show Map-drawing Tooltip",
+		i18nKey = i18nPrefix .. 'option_showmapdrawingtooltip',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
-		desc = 'Show map-drawing tooltip when holding down the tilde (~).',
 	},
 	showterratooltip = {
-		name = "Show Terraform Tooltip",
+		i18nKey = i18nPrefix .. 'option_showterraformtooltip',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
-		desc = 'Show terraform tooltip when performing terraform commands.',
 	},
 	showDrawTools = {
-		name = "Show Drawing Tools When Drawing",
+		i18nKey = i18nPrefix .. 'option_showdrawingtoolswhendrawing',
 		type = 'bool',
 		value = true,
 		noHotkey = true,
@@ -351,10 +346,9 @@ options = {
 	},
 	tooltipThroughPanels = {
 		name='Allow hovering through', type='bool', value=false,
-		desc = 'Show tooltips for units behind empty interface panels.',
 	},
 	tooltip_opacity = {
-		name = "Opacity",
+		i18nKey = i18nPrefix .. 'option_opacity',
 		type = "number",
 		value = 0.92, min = 0, max = 1, step = 0.01,
 		update_on_the_fly = true,
@@ -367,7 +361,7 @@ options = {
 	},
 
 	selection_opacity = {
-		name = "Opacity",
+		i18nKey = i18nPrefix .. 'option_opacity',
 		type = "number",
 		value = 0.8, min = 0, max = 1, step = 0.01,
 		update_on_the_fly = true,
@@ -380,7 +374,6 @@ options = {
 	},
 	allowclickthrough = {
 		name = 'Allow clicking through', type='bool', value=false,
-		desc = 'Mouse clicks through empty parts of the panel act on whatever is underneath.',
 		path = selPath,
 		OnChange = function(self)
 			if selectionWindow then
@@ -406,9 +399,8 @@ options = {
 		end,
 	},
 	ctrlFilter = {
-		name = 'Ctrl Selection Filtering',
+		i18nKey = i18nPrefix .. 'option_ctrlselectionfiltering',
 		type = 'bool',
-		desc = "Hold Ctrl and click on some units. These units will be selected when Ctrl is released.",
 		value = true,
 		path = selPath,
 	},
@@ -421,7 +413,7 @@ options = {
 	--	path = selPath,
 	--},
 	uniticon_size = {
-		name = 'Icon size on selection list',
+		i18nKey = i18nPrefix .. 'option_iconsizeonselectionlist',
 		--desc = 'Determines how small the icon in selection list need to be.',
 		type = 'number',
 		min=30,max=100,step=1,
@@ -438,7 +430,6 @@ options = {
 		type='bool',
 		value= true,
 		noHotkey = true,
-		desc = "Show reload progress for weapon that use manual trigger (only for ungrouped unit selection)",
 		path = selPath,
 		OnChange = function(self)
 			showManualFire = self.value
@@ -449,14 +440,13 @@ options = {
 		type='bool',
 		value= true,
 		noHotkey = true,
-		desc = "Show reload progress for jumpjets (only for ungrouped unit selection)",
 		path = selPath,
 		OnChange = function(self)
 			showJumpReload = self.value
 		end,
 	},
 	fancySkinning = {
-		name = 'Fancy Skinning',
+		i18nKey = i18nPrefix .. 'option_fancyskinning',
 		type = 'radioButton',
 		value = 'panel',
 		path = selPath,
@@ -475,7 +465,7 @@ options = {
 		noHotkey = true,
 	},
 	leftPadding = {
-		name = "Left Padding",
+		i18nKey = i18nPrefix .. 'option_leftpadding',
 		type = "number",
 		value = 0, min = 0, max = 500, step = 1,
 		OnChange = function(self)

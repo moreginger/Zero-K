@@ -80,46 +80,43 @@ local cache = {} --cache some calculation result for efficiency
 local function UpdateColors() end	-- redefined below
 local function UpdateDayPeriod() end
 
+i18nPrefix = 'night_'
 options_path = 'Settings/Graphics/Effects/Night View'
 options_order = {"coloredUnits", "cycle", "time","secperday", "beam", "bases"}
 options = {
 	--[[
 	night = {
-		name = 'Night View',
-		desc = 'Turns night widget on/off.',
+		i18nKey = i18nPrefix .. 'option_nightview',
 		type = 'bool',
 		value = 0,
 	},
 	]]--
 	coloredUnits = {
-		name = "Bright Units",
+		i18nKey = i18nPrefix .. 'option_brightunits',
 		type = 'bool',
 		value = true,
-		desc = 'Bright units even at night',
 		noHotkey = true,
 	},
 	cycle = {
-		name = "Day/night cycle",
+		i18nKey = i18nPrefix .. 'option_daynightcycle',
 		type = 'bool',
 		value = true,
-		desc = 'Enable day/night cycle',
 		noHotkey = true,
 	},
 	time = {
-		name = "Time of day",
+		i18nKey = i18nPrefix .. 'option_timeofday',
 		type = 'number',
 		min = 0,
 		max = 0.5,
 		step = 0.05,
 		value = 0.4,
-		desc = 'Starting Time of day.\n <--Midnight, Noon-->',
 		OnChange = function(self)
 			currDayTime = self.value
 			UpdateColors()
 		end,
 	},
 	secperday = {
-		name = "Game Minute Per Day",
+		i18nKey = i18nPrefix .. 'option_gameminuteperday',
 		type = 'number',
 		min = 1,
 		max = 20,
@@ -132,14 +129,13 @@ options = {
 		end,
 	},
 	beam = {
-		name = "Searchlight Beams",
+		i18nKey = i18nPrefix .. 'option_searchlightbeams',
 		type = 'bool',
 		value = true,
-		desc = 'Display searchlight beams',
 		noHotkey = true,
 	},
 	bases = {
-		name = "Searchlight Bases",
+		i18nKey = i18nPrefix .. 'option_searchlightbases',
 		type = 'radioButton',
 		items = {
 			{ key = 'none', name = 'None', },

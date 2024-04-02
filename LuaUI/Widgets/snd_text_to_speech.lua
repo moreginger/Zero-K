@@ -41,12 +41,12 @@ local function SetupTTS(value)
 	end
 end
 
+i18nPrefix = 'texttospeechcontrol_'
 options_path = 'Settings/Audio'
 options_order = {'tts_vol'}
 options = {
 	tts_vol = {
-		name = "Text-to-speech volume",
-		desc = "TTS reads the ally chat.",
+		i18nKey = i18nPrefix .. 'option_texttospeechvolume',
 		type = 'number',
 		min = 0, max = 100,
 		value = 0, step = 1,

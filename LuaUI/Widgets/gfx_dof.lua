@@ -11,6 +11,7 @@ function widget:GetInfo()
 	}
 end
 
+i18nPrefix = 'depthoffieldshader_'
 options_path = 'Settings/Graphics/Effects/Depth of Field'
 
 options_order = {'useDoF', 'highQuality', 'autofocus', 'mousefocus',  'autofocusLabel', 'autofocusInFocusMultiplier', 'autofocusPower',
@@ -20,14 +21,14 @@ options = {
 	useDoF =
 	{
 		type='bool',
-		name='Apply Depth of Field Effect',
+		i18nKey = i18nPrefix .. 'option_applydepthoffieldeffect',
 		value=false,
 		advanced = false,
 	},
 	highQuality =
 	{
 		type='bool',
-		name='High Quality',
+		i18nKey = i18nPrefix .. 'option_highquality',
 		value=false,
 		advanced=false,
 		OnChange = function(self) InitTextures() end,
@@ -35,13 +36,13 @@ options = {
 	autofocus =
 	{
 		type='bool',
-		name='Automatically Set Focus',
+		i18nKey = i18nPrefix .. 'option_automaticallysetfocus',
 		value=true,
 	},
 	mousefocus =
 	{
 		type='bool',
-		name='Focus on Mouse Position',
+		i18nKey = i18nPrefix .. 'option_focusonmouseposition',
 		value=false,
 	},
 	autofocusLabel =
@@ -52,21 +53,21 @@ options = {
 	autofocusInFocusMultiplier =
 	{
 		type='number',
-		name='Autofocus Minimum In-Focus region size',
+		i18nKey = i18nPrefix .. 'option_autofocusminimuminfocusregionsize',
 		min = 0.05, max = 10.0, step = 0.05,
 		value = 0.4,
 	},
 	autofocusPower =
 	{
 		type='number',
-		name='Autofocus Power (lower = blurrier at range)',
+		i18nKey = i18nPrefix .. 'option_autofocuspowerlowerblurrieratrange',
 		min = 0.05, max = 50.0, step = 0.05,
 		value = 6.0,
 	},
 	autofocusFocalLength =
 	{
 		type='number',
-		name='Autofocus Focal Length',
+		i18nKey = i18nPrefix .. 'option_autofocusfocallength',
 		min = 0.005, max = 1.0, step = 0.005,
 		value = 0.03,
 	},
@@ -78,14 +79,14 @@ options = {
 	focusDepth =
 	{
 		type='number',
-		name='Focus Depth (Manual & Non-Mouse Focus)',
+		i18nKey = i18nPrefix .. 'option_focusdepthmanualnonmousefocus',
 		min = 0.0, max = 2000.0, step = 0.1,
 		value = 300.0,
 	},
 	fStop =
 	{
 		type='number',
-		name='F-Stop (Manual Focus Only)',
+		i18nKey = i18nPrefix .. 'option_fstopmanualfocusonly',
 		min = 1.0, max = 80.0, step = 0.1,
 		value = 16.0,
 	},
