@@ -30,6 +30,7 @@ local window
 local button_setspeed = {}
 local button_skipPreGame
 local button_startStop
+local button_actionCamera
 local progress_speed
 local progress_target
 local label_hoverTime
@@ -92,9 +93,117 @@ options = {
 }
 
 ---------------------------------
+-- Action Tracking Camera
+---------------------------------
+-- A local dev copy of the camera, when installed, is toggled in place of the shipped one.
+local ACTION_CAMERAS = { "Action Tracking Camera DEV", "Action Tracking Camera" }
+
+-- The button toggles the camera for this session only; Settings/Spectating toggles it for good.
+-- For each camera the button changed: restore = state to put back next session,
+-- set = state the button left it in.
+local buttonToggled = {}
+local pendingRestore -- [name] = enabled, from the previous session's config data
+local timeSinceCameraCheck = 0
+
+local function IsWidgetActive(name)
+	local info = widgetHandler.knownWidgets[name]
+	return (info and info.active) or false
+end
+
+-- The camera to toggle, and whether it's running.
+local function GetActionCamera()
+	local fallback
+	for i = 1, #ACTION_CAMERAS do
+		local name = ACTION_CAMERAS[i]
+		if IsWidgetActive(name) then
+			return name, true
+		end
+		if not fallback and widgetHandler:IsWidgetKnown(name) then
+			fallback = name
+		end
+	end
+	return fallback, false
+end
+
+local function SetWidgetEnabled(name, enabled)
+	if enabled then
+		widgetHandler:EnableWidget(name)
+	elseif IsWidgetActive(name) then
+		widgetHandler:DisableWidget(name)
+	else
+		-- Enabled but not running, e.g. it removed itself because we're playing
+		widgetHandler.orderList[name] = 0
+		widgetHandler:SaveOrderList()
+	end
+end
+
+-- Put back cameras the button toggled last session.
+local function RestoreActionCameras()
+	for name, enabled in pairs(pendingRestore or {}) do
+		local isEnabled = (widgetHandler.orderList[name] or 0) > 0
+		if widgetHandler:IsWidgetKnown(name) and isEnabled ~= enabled then
+			SetWidgetEnabled(name, enabled)
+		end
+	end
+	pendingRestore = nil
+end
+
+-- A change made elsewhere (e.g. Settings/Spectating) is deliberate, so let it persist.
+local function ForgetOutsideToggles()
+	for name, toggled in pairs(buttonToggled) do
+		if IsWidgetActive(name) ~= toggled.set then
+			buttonToggled[name] = nil
+		end
+	end
+end
+
+local function UpdateActionCameraButton()
+	if not button_actionCamera then
+		return
+	end
+	local _, active = GetActionCamera()
+	button_actionCamera.backgroundColor = active and SELECT_BUTTON_COLOR or BUTTON_COLOR
+	button_actionCamera.focusColor = active and SELECT_BUTTON_FOCUS_COLOR or BUTTON_FOCUS_COLOR
+	button_actionCamera:Invalidate()
+end
+
+local function ToggleActionCamera()
+	ForgetOutsideToggles()
+	local name, active = GetActionCamera()
+	if not name then
+		return
+	end
+	local toggled = buttonToggled[name]
+	if not toggled then
+		toggled = { restore = active }
+		buttonToggled[name] = toggled
+	end
+	SetWidgetEnabled(name, not active)
+	toggled.set = IsWidgetActive(name)
+	UpdateActionCameraButton()
+end
+
+function widget:GetConfigData()
+	ForgetOutsideToggles()
+	local restore = {}
+	for name, toggled in pairs(buttonToggled) do
+		if toggled.restore ~= toggled.set then
+			restore[name] = toggled.restore
+		end
+	end
+	return { restoreActionCamera = restore }
+end
+
+function widget:SetConfigData(data)
+	pendingRestore = data.restoreActionCamera
+end
+
+---------------------------------
 ---------------------------------
 
 function widget:Initialize()
+	-- Before the live mode check, so a toggle from a replay doesn't carry over to spectating.
+	RestoreActionCameras()
 	if (not Spring.IsReplay()) then
 		Spring.Echo ("<" .. widgetName .. "> Live mode. Widget removed.")
 		widgetHandler:RemoveWidget(self)
@@ -254,7 +363,7 @@ function CreateTheUI()
 		end}
 	}
 
-	local skipPreGameWidth = 160
+	local skipPreGameWidth = 130
 	if frame == 0 then
 		button_skipPreGame = Button:New {
 			width = skipPreGameWidth,
@@ -275,6 +384,31 @@ function CreateTheUI()
 		--in case reloading luaui mid demo
 		widgetHandler:RemoveWidgetCallIn("AddConsoleMessage")
 	end
+
+	button_actionCamera = Button:New {
+		width = 30,
+		height = 20,
+		y = 50,
+		x = 5 + startStopWidth + skipPreGameWidth,
+		classname = "button_tiny",
+		noFont = true,
+		parent = window,
+		padding = {7, 2, 7, 2}, -- icon at its native 16px
+		margin = {0, 0, 0, 0},
+		tooltip = WG.Translate("interface", "replay_controls_toggle_action_camera_tooltip"),
+		children = {
+			Image:New {
+				-- Monochrome take on the Settings/Spectating popcorn icon
+				file = 'LuaUI/Images/epicmenu/popcorn_white.png',
+				x = 0,
+				y = 0,
+				right = 0,
+				bottom = 0,
+			}
+		},
+		OnClick = {ToggleActionCamera},
+	}
+	UpdateActionCameraButton()
 
 	label_hoverTime = Label:New {
 		width = 20,
@@ -373,6 +507,13 @@ function widget:Update(dt)
 		else
 			lastSkippedTime = lastSkippedTime + dt
 		end
+	end
+	timeSinceCameraCheck = timeSinceCameraCheck + dt
+	if timeSinceCameraCheck > 0.5 then
+		-- The camera can also be toggled from Settings
+		timeSinceCameraCheck = 0
+		ForgetOutsideToggles()
+		UpdateActionCameraButton()
 	end
 	currentFrameTime = currentFrameTime + dt
 	if currentFrameTime > 0 then
